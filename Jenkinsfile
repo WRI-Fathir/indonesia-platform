@@ -37,11 +37,11 @@ node {
       }
     }
 
-    stage ('Run Tests') {
+    // stage ('Run Tests') {
     //  sh('docker-compose -H :2375 -f docker-compose-test.yml build')
     //  sh('docker-compose -H :2375 -f docker-compose-test.yml run --rm test')
     //  sh('docker-compose -H :2375 -f docker-compose-test.yml stop')
-    }
+    // }
 
     stage('Push Docker') {
       withCredentials([usernamePassword(credentialsId: 'WRI Docker Hub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
@@ -56,9 +56,10 @@ node {
       sh("echo List kubernetes context")
       sh("kubectl config get-contexts")
       sh("echo Deploying to STAGING cluster")
-      sh("kubectl config use-context ${KUBECTL_CONTEXT_PREFIX}_${CLOUD_PROJECT_NAME}_${CLOUD_PROJECT_ZONE}_${KUBE_PROD_CLUSTER}")
-      switch ("${env.BRANCH_NAME}") {
+      // sh("kubectl config use-context ${KUBECTL_CONTEXT_PREFIX}_${CLOUD_PROJECT_NAME}_${CLOUD_PROJECT_ZONE}_${KUBE_PROD_CLUSTER}")
+      sh("kubectl config use-context ${KUBECTL_CONTEXT_PREFIX}_${CLOUD_PROJECT_NAME}_${CLOUD_PROJECT_ZONE}_dev")
 
+      switch ("${env.BRANCH_NAME}") {
         // Roll out to staging
         case "staging":
           sh("echo Deploying to STAGING app")
