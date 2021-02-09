@@ -29,7 +29,8 @@ WORKDIR /usr/src/$NAME
 # Install app dependencies
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install --without development test --jobs 4 --deployment
+#RUN bundle install --without development test --jobs 4 --deployment
+RUN bundle install
 
 # Env variables
 ARG secretKey
