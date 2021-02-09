@@ -19,7 +19,7 @@ RUN apt-get update \
     && apt-get install -y nodejs build-essential patch zlib1g-dev liblzma-dev libicu-dev \
     && npm install -g yarn
 
-RUN gem install bundler --no-ri --no-rdoc
+RUN gem install bundler -v 1.17.3 --no-ri --no-rdoc
 
 # Create app directory
 RUN mkdir -p /usr/src/$NAME
