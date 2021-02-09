@@ -27,7 +27,7 @@ WORKDIR /usr/src/$NAME
 # VOLUME /usr/src/$NAME
 
 # Install app dependencies
-COPY Gemfile Gemfile ./
+COPY Gemfile Gemfile.lock ./
 
 RUN bundle install --without development test --jobs 4 --deployment
 

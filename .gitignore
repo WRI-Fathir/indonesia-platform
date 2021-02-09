@@ -53,8 +53,6 @@ bower.json
 
 .DS_Store
 
-Gemfile.lock
-
 # Editors
 .vscode/
 coverage
