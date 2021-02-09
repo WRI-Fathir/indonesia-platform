@@ -68,7 +68,7 @@ node {
           break
 
         // Roll out to production
-        case "deploy":
+        case "develop":
           def userInput = true
           def didTimeout = false
           try {
