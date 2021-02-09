@@ -58,12 +58,6 @@ node {
       switch ("${env.BRANCH_NAME}") {
 
         // Roll out to staging
-        case "develop":
-          sh("echo Deploying to STAGING app")
-          sh("kubectl apply -f k8s/staging/")
-          sh("kubectl set image deployment ${appName}-staging ${appName}-staging=${imageTag} --record --namespace=climate-watch")
-          break
-
         case "staging":
           sh("echo Deploying to STAGING app")
           sh("kubectl apply -f k8s/staging/")
@@ -71,7 +65,7 @@ node {
           break
 
         // Roll out to production
-        case "master":
+        case "deploy":
           def userInput = true
           def didTimeout = false
           try {
