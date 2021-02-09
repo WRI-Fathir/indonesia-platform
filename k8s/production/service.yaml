@@ -3,8 +3,8 @@ kind: Service
 metadata:
   namespace: climate-watch
   labels:
-    name: indonesia-platform
-  name: indonesia-platform
+    name: climate-watch-indonesia-platform
+  name: climate-watch-indonesia-platform
 spec:
   ports:
   - name: http
@@ -12,4 +12,4 @@ spec:
     port: 80
     targetPort: 3000
   selector:
-    name: indonesia-platform
+    name: climate-watch-indonesia-platform

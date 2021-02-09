@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 # lock "~> 3.11.2"
 
-set :application, "indonesia-platform"
-set :repo_url, "https://github.com/anggiaramadhan/indonesia-platform.git"
+set :application, "climate-watch-indonesia-platform"
+set :repo_url, "https://github.com/wri/climate-watch-indonesia-platform.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

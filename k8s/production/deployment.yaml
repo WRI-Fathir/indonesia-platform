@@ -3,15 +3,15 @@ kind: Deployment
 metadata:
   namespace: climate-watch
   labels:
-    name: indonesia-platform
-  name: indonesia-platform
+    name: climate-watch-indonesia-platform
+  name: climate-watch-indonesia-platform
 spec:
   progressDeadlineSeconds: 2147483647
   replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      name: indonesia-platform
+      name: climate-watch-indonesia-platform
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        name: indonesia-platform
+        name: climate-watch-indonesia-platform
     spec:
       affinity:
         nodeAffinity:
@@ -39,7 +39,7 @@ spec:
                     - key: name
                       operator: In
                       values:
-                        - indonesia-platform
+                        - climate-watch-indonesia-platform
                 topologyKey: kubernetes.io/hostname
               weight: 100
       containers:
@@ -92,9 +92,9 @@ spec:
                 secretKeyRef:
                   key: CW_PLATFORMS_S3_SECRET_ACCESS_KEY
                   name: appsecrets
-          image: vizzuality/indonesia-platform
+          image: vizzuality/climate-watch-indonesia-platform
           imagePullPolicy: Always
-          name: indonesia-platform
+          name: climate-watch-indonesia-platform
           ports:
             - containerPort: 3000
               protocol: TCP
