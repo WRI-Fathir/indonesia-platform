@@ -3,13 +3,24 @@ import PropTypes from 'prop-types';
 import SectionTitle from 'components/section-title';
 import InfoDownloadToolbox from 'components/info-download-toolbox';
 import Chart from 'components/chart';
-import { Dropdown } from 'cw-components';
+import { Dropdown, Button, Icon } from 'cw-components';
+import ModalShare from 'components/modal-share';
+import cx from 'classnames'
 
 import dropdownStyles from 'styles/dropdown';
 import CustomTooltip from '../bar-chart-tooltip';
+import shareIcon from 'assets/icons/share';
 import styles from './population-styles';
 
 class Population extends PureComponent {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      isOpen: false
+    };
+  }
+
   render() {
     const {
       t,
@@ -22,11 +33,13 @@ class Population extends PureComponent {
       downloadURI
     } = this.props;
 
+    const shareableLink = `${window.location.origin}${window.location.pathname}#population`
+    const { isOpen } = this.state
     const nationalIndLabel = t(
       'pages.national-context.socioeconomic.labels.national-indicators'
     );
     return (
-      <div className={styles.page}>
+      <div className={styles.page} id="population">
         <SectionTitle
           title={t('pages.national-context.socioeconomic.population.title')}
           description={t(
@@ -48,11 +61,20 @@ class Population extends PureComponent {
                   hideResetButton
                 />
               </div>
-              <InfoDownloadToolbox
-                className={{ buttonWrapper: styles.buttonWrapper }}
-                slugs={sources}
-                downloadUri={downloadURI}
-              />
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <InfoDownloadToolbox
+                  className={{ buttonWrapper: styles.buttonWrapper }}
+                  slugs={sources}
+                  downloadUri={downloadURI}
+                />
+                <Button
+                  theme={{ button: cx(styles.shareButton) }}
+                  onClick={() => this.setState({ isOpen: !isOpen })}
+                >
+                  <Icon icon={shareIcon} />
+                  <span className={styles.shareText}>Share</span>
+                </Button>
+              </div>
             </div>
             {
               chartData &&
@@ -76,6 +98,7 @@ class Population extends PureComponent {
             }
           </div>
         </div>
+        <ModalShare isOpen={isOpen} closeModal={() => this.setState({ isOpen: false })} sharePath={shareableLink} />
       </div>
     );
   }

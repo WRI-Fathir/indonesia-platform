@@ -40,7 +40,7 @@ class NavNestedMenuComponent extends PureComponent {
   }
 
   renderChild() {
-    const { Child, title } = this.props;
+    const { Child, title, t } = this.props;
     const { open } = this.state;
 
     return (
@@ -52,7 +52,10 @@ class NavNestedMenuComponent extends PureComponent {
           className={cx(rootStyles.link, navStyles.link, styles.button)}
           onClick={this.toggleOpen}
         >
-          {title && <div className={styles.title}>{title}</div>}
+          {
+            title &&
+              <div className={styles.title}>{t('pages.regions.title')}</div>
+          }
           <Icon
             icon={arrow}
             theme={{ icon: cx(styles.icon, { [styles.upIcon]: open }) }}
@@ -126,7 +129,8 @@ NavNestedMenuComponent.propTypes = {
   options: PropTypes.array,
   buttonClassName: PropTypes.string,
   positionRight: PropTypes.bool,
-  Child: PropTypes.oneOfType([ PropTypes.element, PropTypes.func ])
+  Child: PropTypes.oneOfType([ PropTypes.element, PropTypes.func ]),
+  t: PropTypes.func
 };
 
 NavNestedMenuComponent.defaultProps = {
@@ -136,7 +140,9 @@ NavNestedMenuComponent.defaultProps = {
   options: [],
   buttonClassName: '',
   positionRight: true,
-  Child: null
+  Child: null,
+  t: () => {
+  }
 };
 
 export default NavNestedMenuComponent;

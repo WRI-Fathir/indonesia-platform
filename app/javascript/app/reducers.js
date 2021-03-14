@@ -3,11 +3,15 @@ import { handleModule } from 'redux-tools';
 
 // Components
 import { reduxModule as ghgEmissions } from 'providers/ghg-emissions-provider';
+import { reduxModule as emissionProjection } from 'providers/emission-projection-provider';
 import {
   reduxModule as ghgTargetEmissions
 } from 'providers/ghg-target-emissions-provider';
 import { reduxModule as modalMetadata } from 'components/modal-metadata';
 import { reduxModule as metadata } from 'providers/metadata-provider';
+import {
+  reduxModule as ghgInventoryMetadata
+} from 'providers/ghg-inventory-metadata-provider';
 import { reduxModule as worldBank } from 'providers/world-bank-provider';
 import {
   reduxModule as fundingOportunities
@@ -15,6 +19,8 @@ import {
 
 // Providers
 import { reduxModule as indicators } from 'providers/indicators-provider';
+import { reduxModule as policies } from 'providers/policies-provider';
+import { reduxModule as provinceMeta } from 'providers/province-meta-provider';
 import {
   reduxModule as emissionActivites
 } from 'providers/emission-activities-provider';
@@ -29,16 +35,20 @@ import {
   reduxModule as ndcContentOverview
 } from 'providers/ndc-content-overview-provider';
 import { reduxModule as timeline } from 'providers/timeline-provider';
-import { reduxModule as ndcCountryAccordion } from 'components/ndcs-country-accordion';
+import {
+  reduxModule as ndcCountryAccordion
+} from 'components/ndcs-country-accordion';
 
 // Router
 import router from './router';
 
 const componentsReducers = {
   GHGEmissions: handleModule(ghgEmissions),
+  EmissionProjection: handleModule(emissionProjection),
   GHGTargetEmissions: handleModule(ghgTargetEmissions),
   modalMetadata: handleModule(modalMetadata),
   metadata: handleModule(metadata),
+  ghgInventoryMetadata: handleModule(ghgInventoryMetadata),
   WorldBank: handleModule(worldBank),
   FundingOportunities: handleModule(fundingOportunities),
   ndcCountryAccordion: handleModule(ndcCountryAccordion)
@@ -47,6 +57,8 @@ const componentsReducers = {
 const providerReducers = {
   translations: handleModule(translations),
   indicators: handleModule(indicators),
+  policies: handleModule(policies),
+  provinceMeta: handleModule(provinceMeta),
   emissionActivities: handleModule(emissionActivites),
   adaptation: handleModule(adaptation),
   provinces: handleModule(locations),

@@ -1,8 +1,9 @@
 ActiveAdmin.register AdminUser do
+  menu priority: 2
   permit_params :email, :password, :password_confirmation, :role
 
   controller do
-    before_action :check_admin_role, only: [:new]
+    before_action :check_admin_role, only: [:new, :read, :destroy]
 
     def check_admin_role
       !current_admin_user.superuser? &&
@@ -17,6 +18,12 @@ ActiveAdmin.register AdminUser do
           :update_without_password
         end
       object.send(update_method, *attributes)
+    end
+
+    def update
+      update! do |format|
+        format.html { redirect_to edit_admin_admin_user_path(@admin_user) }
+      end
     end
   end
 
@@ -39,8 +46,7 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.inputs do
       f.input :email
-      f.input :role, as: :select, collection: %w(superuser admin),
-                     selected: 'admin', include_blank: false
+      f.input :role, as: :select, collection: %w(superuser admin admin_province admin_national), include_blank: false if current_admin_user.superuser?
       f.input :password
       f.input :password_confirmation
     end

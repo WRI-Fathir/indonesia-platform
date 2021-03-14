@@ -21,7 +21,10 @@ class ClimatePlans extends PureComponent {
     const tableHeaders = nt('climate-plans-table-headers', {});
     const defaultColumns = Object.values(tableHeaders);
 
+    console.log('default column', defaultColumns)
+    console.log('data', data)
     const tableData = data.map(d => renameKeys(d, tableHeaders));
+    console.log('tabledata', tableData)
 
     return (
       <Table

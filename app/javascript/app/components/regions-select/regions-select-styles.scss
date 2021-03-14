@@ -1,2 +1,55 @@
 @import '~styles/layout.scss';
 @import '~styles/settings.scss';
+
+.wrapper {
+  padding-left: 7vw;
+  padding-right: 7vw;
+  height: 650px;
+  width: 100vw !important;
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  background-color: $white;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  border-top: solid 1px $gray2;
+
+  @media #{$tablet-landscape} {
+    height: 650px; // 196px = font size plus footer padding
+  }
+}
+
+.searchAndCompare {
+  @include columns((8,4));
+
+  @media #{$tablet-landscape} {
+    @include columns((10,2));
+  }
+}
+
+.columns {
+  height: 650px;
+
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns((4,8));
+  }
+}
+
+.map {
+  display: inline-block;
+  margin-left: $gutter-padding;
+  text-align: center;
+}
+
+.list {
+  display: inline-block;
+  font-size: $font-size-m;
+  max-height: 650px;
+  vertical-align: top;
+
+  @media #{$tablet-landscape} {
+    font-size: $font-size;
+  }
+}

@@ -1,2 +1,45 @@
 @import '~styles/settings.scss';
 @import '~styles/layout.scss';
+
+$dropdown-min-width: 265px;
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+}
+
+.container {
+  @include columns($columns: 12);
+}
+
+.toolbox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  max-width: $dropdown-min-width;
+}
+
+.buttonWrapper {
+  align-self: flex-end;
+  max-width: 100px;
+}
+
+.legend {
+  margin-top: 15px;
+}
+
+.shareButton {
+  margin-top: 22px;
+  margin-left: 10px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}

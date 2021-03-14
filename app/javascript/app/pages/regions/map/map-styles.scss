@@ -1,0 +1,64 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+  margin-bottom: $gutter-padding * 3;
+}
+
+.mapContainer {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (12));
+  }
+}
+
+.map {
+  height: 500px;
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.mapButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100%;
+  background-color: #ffffff;
+  -webkit-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+}
+
+.mapButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mapButtonActive {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #EDEDED;
+}
+
+.buttonText {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 5px;
+}

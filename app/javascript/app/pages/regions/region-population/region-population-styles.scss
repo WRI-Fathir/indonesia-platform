@@ -1,0 +1,152 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+$dropdown-min-width: 150px;
+$dropdown-max-width: 265px;
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+}
+
+.container {
+  @include columns($columns: 12);
+}
+
+.toolbox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdownContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  min-width: $dropdown-min-width;
+  max-width: $dropdown-max-width;
+  margin-right: 10px;
+}
+
+.shareButton {
+  margin-top: 22px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}
+
+/*.primary {
+  color: $theme-color;
+  background-color: $action-color;
+
+  &.disabled {
+    color: $border-color;
+  }
+}*/
+
+/*.buttonWrapper {
+  align-self: flex-end;
+  max-width: 100px;
+}*/
+
+.legend {
+  margin-top: 15px;
+}
+
+.dropdowns {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (3,3,3.8,2.1));
+  }
+}
+
+.buttonWrapper {
+  margin-top: 22px;
+  margin-right: 15px;
+  max-width: 200px;
+}
+
+.chartMapContainer {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (7.5,4.5));
+  }
+}
+
+.chartContainer {
+  min-height: 500px;
+}
+
+.legend {
+  margin-top: $gutter-padding;
+}
+
+.projectedLegend {
+  margin-left: 0;
+}
+
+.targetChartsContainer {
+  @include columns();
+
+  margin-top: 50px;
+
+  @media #{$tablet-landscape} {
+    @include columns(6);
+  }
+}
+
+.switch {
+  .switchWrapper {
+    width: 383px;
+    margin-left: $gutter-padding / 2;
+    margin-bottom: $gutter-padding + 10px;
+  }
+
+  .checkedOption {
+    background-color: #213244;
+  }
+}
+
+.card {
+  text-align: center;
+  height: 200px;
+}
+
+.cardContainer {
+  @media #{$tablet-landscape} {
+    @include columns($columns: (6,6,6,6));
+
+    height: 450px;
+    // margin-top: -85px;
+  }
+}
+
+.data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContent {
+  font-size: 24px;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.title {
+  font-size: 14px;
+}

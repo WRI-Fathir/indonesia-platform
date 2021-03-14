@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 
 import store from 'app/store';
 import Root from './layouts/root';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const App = ({ data }) => (
   <Provider store={store(data)}>

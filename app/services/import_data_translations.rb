@@ -9,7 +9,6 @@ class ImportDataTranslations
     return unless valid_headers?(csv, DATA_FILEPATH, headers)
 
     ActiveRecord::Base.transaction do
-      cleanup
       import_data
     end
   end

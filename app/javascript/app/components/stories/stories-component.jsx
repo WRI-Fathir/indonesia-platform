@@ -9,6 +9,31 @@ import button from 'styles/themes/button';
 import styles from './stories-styles.scss';
 
 class Stories extends PureComponent {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      stories: {
+        en: [],
+        id: []
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.getStories()
+  }
+
+  async getStories() {
+    const response = await fetch('https://urundata.id/cwi/blogs')
+    if(response.ok) {
+      const data = await response.json()
+      this.setState({
+        stories: data
+      })
+    }
+  }
+
   handleBtnClick = () => {
     const { locale } = this.props;
     window.open(`${WRI_INDONESIA_WEBSITE}/${locale}/blog`, '_blank');
@@ -19,7 +44,8 @@ class Stories extends PureComponent {
   };
 
   render() {
-    const { stories, t, locale } = this.props;
+    const { t, locale } = this.props;
+    const { stories } = this.state;
     const { title, button: buttonTitle } = t(
       'pages.homepage.highlighted-stories'
     );

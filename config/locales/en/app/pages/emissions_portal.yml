@@ -1,0 +1,27 @@
+en:
+  app:
+    pages:
+      emissions-portal:
+        title: Emissions Portal
+        description: "This section provides context for Indonesias’s climate change response, including information on provincial development priorities, population, economy, energy, and climate risks from natural disasters."
+        ghg-emission-inventory:
+          title: GHG Emissions Inventory - MOEF
+          description: Keeping track of greenhouse gas emissions over time ensure that decision-making align with national targets to reduce emissions. It could after decition making for climate action and planning at the national and sub-national levels.
+          region:
+            national: National
+          break-by:
+            region-absolute: Region - Absolute
+            sector-absolute: Sector - Absolute
+          labels:
+            break-by: Break by
+            region: Region
+            sector: Sector
+            category: Category
+            sub-category: Sub Category
+            gas: Gas
+            chart-type: Chart Type
+        ghg-emission-inventory-cait:
+          title: GHG Emissions Inventory - CAIT
+          description: Keeping track of greenhouse gas emissions over time ensure that decision-making align with national targets to reduce emissions. It could after deciton making for climate action and planning at the national and sub-national levels.
+        emission-map:
+          title: Map

@@ -5,6 +5,8 @@ import uniq from 'lodash/uniq';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import sortBy from 'lodash/sortBy';
+import castArray from 'lodash/castArray';
+import { findOption } from 'selectors/filters-selectors';
 import {
   getThemeConfig,
   getTooltipConfig,
@@ -129,7 +131,9 @@ const getProvincesSelectionOptions = createSelector(
   getSelectedIndicatorsValues,
   selectedIndicatorValues => {
     if (!selectedIndicatorValues) return null;
-    return selectedIndicatorValues.map(i => ({
+    const sortedIndicatorValues = sortBy(selectedIndicatorValues, 'location')
+
+    return sortedIndicatorValues.map(i => ({
       label: i.location,
       value: i.location_iso_code3
     }));
@@ -141,7 +145,7 @@ const getSelectedProvinces = createSelector(
   (query, options) => {
     if (!options) return null;
     if (!query || !query.popProvince)
-      return [ { value: options[0].value, label: options[0].label } ];
+      return castArray(findOption(options, 'IDN'))
     const queryArray = query.popProvince.split(',');
     const provincesSelected = queryArray.map(q => {
       const provincesData = options.find(o => o.value === q);

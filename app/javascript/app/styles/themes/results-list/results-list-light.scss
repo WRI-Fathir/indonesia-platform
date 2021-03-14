@@ -1,0 +1,26 @@
+@import '~styles/settings.scss';
+
+.resultsList {
+  border: none;
+  background-color: transparent;
+  -ms-overflow-style: none;
+  // overflow: -moz-scrollbars-none;
+  overflow-y: auto;
+
+  /*&::-webkit-scrollbar {
+    width: 0;
+  }*/
+}
+
+.listItem {
+  border-bottom: solid 1px $gray2;
+}
+
+.link {
+  color: $gray1;
+  padding: $gutter-padding / 2;
+
+  &:hover {
+    color: $theme-color;
+  }
+}

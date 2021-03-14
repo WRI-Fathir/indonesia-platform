@@ -17,9 +17,7 @@ module HistoricalEmissions
 
     translates :name, i18n: :metric
 
-    validates_presence_of :name, :unit
-
-    validates :unit, uniqueness: {scope: :name}
+    validates_presence_of :name
 
     def code
       Code.create(read_attribute(:name))

@@ -3,7 +3,7 @@ import flatten from 'lodash/flatten';
 import { scaleQuantile } from 'd3-scale';
 
 import { getProvince, getLocations } from 'selectors/provinces-selectors';
-import { METRIC } from 'constants';
+import { METRIC, SECTOR_TOTAL } from 'constants';
 
 import indonesiaPaths from 'utils/maps/indonesia-paths';
 import { getTranslate } from 'selectors/translation-selectors';
@@ -12,7 +12,8 @@ import {
   filterBySelectedOptions,
   getEmissionsData,
   getUnit,
-  getSelectedOptions
+  getSelectedOptions,
+  getCorrectedUnit
 } from '../regions-ghg-emissions-selectors';
 
 const DEFAULT_MAP_CENTER = [ 113, -1.86 ];
@@ -85,7 +86,8 @@ export const getMap = createSelector(
     getProvince,
     getSelectedYear,
     getTranslate,
-    getLocations
+    getLocations,
+    getCorrectedUnit
   ],
   (
     emissions,
@@ -94,7 +96,8 @@ export const getMap = createSelector(
     provinceISO,
     selectedYear,
     t,
-    provincesDetails
+    provincesDetails,
+    correctedUnit
   ) =>
     {
       if (!emissions || !selectedOptions || !unit) return {};
@@ -102,7 +105,6 @@ export const getMap = createSelector(
       const paths = [];
       const isAbsoluteMetric = selectedOptions.metric.code === METRIC.absolute;
       const divisor = isAbsoluteMetric && unit.startsWith('kt') ? 1000 : 1;
-      const correctedUnit = isAbsoluteMetric ? unit.replace('kt', 'Mt') : unit;
       const byProvinceISO = path =>
         (path.properties && path.properties.code_hasc) === provinceISO;
       const provincePath = indonesiaPaths.find(byProvinceISO);
@@ -112,11 +114,14 @@ export const getMap = createSelector(
           provincePath.properties.latitude
         ]
         : DEFAULT_MAP_CENTER;
+
       const filteredEmissions = filterBySelectedOptions(
         emissions,
         selectedOptions
       );
+
       if (!filteredEmissions.length) return { paths: indonesiaPaths };
+
       const normalizedEmissions = flatten(
         filteredEmissions.map(
           e =>

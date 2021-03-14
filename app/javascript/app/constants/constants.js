@@ -19,3 +19,6 @@ export const NDC_LINKS_OPTIONS = [
   { value: 'ndc', label: 'NDC (EN)' },
   { value: 'indc', label: 'INDC (EN)' }
 ];
+
+export const WEST_PAPUA = { label: 'West Papua', code: 'ID.PB', value: 'ID.PB' }
+export const SELECT_ALL = { label: 'All Selected', code: 'all-selected', value: 'all-selected' }

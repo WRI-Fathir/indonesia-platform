@@ -1,0 +1,181 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+$dropdown-min-width: 150px;
+$dropdown-max-width: 265px;
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+}
+
+.container {
+  @include columns($columns: 12);
+}
+
+.toolbox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdownContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  min-width: $dropdown-min-width;
+  max-width: $dropdown-max-width;
+  margin-right: 10px;
+}
+
+/*.buttonWrapper {
+  align-self: flex-end;
+  max-width: 100px;
+}*/
+
+.legend {
+  margin-top: 15px;
+}
+
+.dropdowns {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (3,3,3.8,2.1));
+  }
+}
+
+.buttonWrapper {
+  margin-top: 22px;
+  max-width: 200px;
+}
+
+.button {
+  width: 110px;
+  box-shadow: none;
+}
+
+.shareButton {
+  margin-top: 22px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}
+
+.chartMapContainer {
+  @include columns(6,6);
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (6,6));
+  }
+}
+
+.chartContainer {
+  @include columns(12);
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (12));
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    border-bottom: 1px solid #939495;
+    background-color: #ffffff;
+  }
+
+  td, th {
+    text-align: left;
+    padding: 20px 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f3f5f6;
+  }
+}
+
+.legend {
+  margin-top: $gutter-padding;
+}
+
+.projectedLegend {
+  margin-left: 0;
+}
+
+.targetChartsContainer {
+  @include columns();
+
+  margin-top: 50px;
+
+  @media #{$tablet-landscape} {
+    @include columns(6);
+  }
+}
+
+.switch {
+  .switchWrapper {
+    width: 383px;
+    margin-left: $gutter-padding / 2;
+    margin-bottom: $gutter-padding + 10px;
+  }
+
+  .checkedOption {
+    background-color: #213244;
+  }
+}
+
+.cardContainer {
+  @include columns($columns: (4,8));
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (4,8));
+  }
+
+  margin-bottom: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  min-height: 230px;
+  width: 100%;
+  padding: 30px 20px;
+
+  background-color: $white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border: solid 1px rgba($border-color, 0.1);
+
+  li {
+    margin-bottom: 16px;
+  }
+}
+
+.number {
+  font-size: 24px;
+  color: #113750;
+}
+
+.cardContent {
+  font-size: 18px;
+  color: #113750;
+}
+
+.legend {
+  margin-top: $gutter-padding;
+}
+
+.projectedLegend {
+  margin-left: 0;
+}

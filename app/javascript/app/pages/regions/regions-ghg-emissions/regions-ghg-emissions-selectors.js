@@ -2,6 +2,7 @@ import { createStructuredSelector, createSelector } from 'reselect';
 import castArray from 'lodash/castArray';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import { format } from 'd3-format';
 import {
   ALL_SELECTED,
   API_TARGET_DATA_SCALE,
@@ -30,19 +31,27 @@ const { COUNTRY_ISO } = process.env;
 
 const FRONTEND_FILTERED_FIELDS = [ 'gas', 'sector', 'metric' ];
 
+const DEFAULTS = {
+  gas: 'CO2EQ'
+}
+
 const getQuery = ({ location }) => location && (location.query || null);
 
 const getMetadataData = ({ metadata }) =>
   metadata && metadata.ghgindo && metadata.ghgindo.data;
+
 export const getEmissionsData = ({ GHGEmissions }) =>
   get(GHGEmissions, 'data.length') ? GHGEmissions.data : [];
+
 const getTargetEmissionsData = ({ GHGTargetEmissions }) =>
   get(GHGTargetEmissions, 'data.length') ? GHGTargetEmissions.data : [];
+
 const getProvinceTargetEmissionsData = createSelector(
   [ getTargetEmissionsData, getProvince ],
   (emissionTargets, provinceISO) =>
     emissionTargets.filter(e => e.location === provinceISO)
 );
+
 const getProvinceEmissionsData = createSelector(
   [ getEmissionsData, getProvince ],
   (emissionsData, provinceISO) =>
@@ -100,7 +109,7 @@ const getDefaults = createSelector([ getFilterOptions, getAllSelectedOption ], (
   allSelectedOption
 ) => ({
   sector: allSelectedOption,
-  gas: get(options, 'gas[0]'),
+  gas: findOption(options.gas, DEFAULTS.gas),
   metric: get(options, 'metric[0]')
 }));
 
@@ -139,32 +148,38 @@ const getSectorsSelected = createSelector(
   }
 );
 
-export const getEmissionParams = createSelector([ getSource ], source => {
+export const getEmissionParams = createSelector([ getMetadataData, getSource ], (meta, source) => {
   if (!source) return null;
-  return { location: COUNTRY_ISO, source };
+  const category = findOption(meta.category, SECTOR_TOTAL).value;
+  const sub_category = findOption(meta.subCategory, SECTOR_TOTAL).value;
+
+  return { location: 'IDN', source, category, sub_category };
 });
 
 // DATA
 export const getUnit = createSelector(
-  [ getMetadataData, getFieldSelected('metric') ],
-  (meta, metric) => {
-    if (!meta || !metric) return null;
-    const { metric: metrics } = meta;
-    const metricObject = metrics && metrics.find(m => metric.code === m.code);
-    return metricObject && metricObject.unit;
+  [ getMetadataData, getFieldSelected('gas') ],
+  (meta, gas) => {
+    if (!meta || !gas) return null;
+    const { unit } = findOption(meta.gas, gas.value)
+
+    return unit
   }
 );
 
 export const getScale = createSelector([ getUnit ], unit => {
   if (!unit) return null;
+  if (unit.startsWith('Mt')) return 1000000;
   if (unit.startsWith('kt')) return 1000;
   return 1;
 });
 
-const getCorrectedUnit = createSelector([ getUnit, getScale ], (unit, scale) =>
+export const getCorrectedUnit = createSelector([ getUnit, getScale ], (unit, scale) =>
   {
     if (!unit || !scale) return null;
-    return unit.replace('kt', 't');
+    if (unit.startsWith('kt')) return unit.replace('kt', 't');
+
+    return unit.replace('Mt', 't');
   });
 
 const getLegendDataOptions = getFieldOptions('sector');
@@ -206,7 +221,6 @@ const parseChartData = createSelector(
   ],
   (emissionsData, yColumnOptions, selectedOptions, unit, scale) => {
     if (!emissionsData || !yColumnOptions) return null;
-
     const yearValues = emissionsData.length
       ? emissionsData[0].emissions.map(d => d.year)
       : [];
@@ -222,7 +236,6 @@ const parseChartData = createSelector(
       filteredData.forEach(d => {
         const columnObject = yColumnOptions.find(c => c.code === d.sector);
         const yKey = columnObject && columnObject.value;
-
         if (yKey) {
           const yData = d.emissions.find(e => e.year === x);
           if (yData && yData.value) {
@@ -239,9 +252,19 @@ const parseChartData = createSelector(
 
 let colorCache = {};
 
+// Y LABEL FORMATS
+const getCustomYLabelFormat = unit => {
+  const formatY = {
+    'MtCO2e': value => `${(value)}`,
+    'MtCO2e/Capita': value => value,
+    'MtCO2e/billion Rupiah': value => `${format(',.0f')(value/1e3)} ribu`
+  };
+  return formatY[unit];
+};
+
 export const getChartConfig = createSelector(
   [
-    getProvinceEmissionsData,
+    parseChartData,
     getProvinceTargetEmissionsData,
     getCorrectedUnit,
     getYColumnOptions,
@@ -250,12 +273,12 @@ export const getChartConfig = createSelector(
   ],
   (data, targetEmissionsData, unit, yColumnOptions, metricSelected, t) => {
     if (!data || !metricSelected) return null;
-    const tooltip = getTooltipConfig(yColumnOptions);
+    const tooltipModified = getTooltipConfig(yColumnOptions);
     const theme = getThemeConfig(yColumnOptions);
     colorCache = { ...theme, ...colorCache };
     const axes = {
       ...DEFAULT_AXES_CONFIG,
-      yLeft: { ...DEFAULT_AXES_CONFIG.yLeft, unit }
+      yLeft: { ...DEFAULT_AXES_CONFIG.yLeft, unit: `${unit}`}
     };
     const targetLabels = t(
       'pages.national-context.historical-emissions.target-labels',
@@ -271,12 +294,15 @@ export const getChartConfig = createSelector(
       projectedLabel: {}
     };
 
+    const yLabelFormat = getCustomYLabelFormat(unit)
+
     const config = {
       axes,
       theme: colorCache,
-      tooltip,
+      tooltip: tooltipModified,
       animation: false,
-      columns: { x: [ { label: 'year', value: 'x' } ], y: yColumnOptions }
+      columns: { x: [ { label: 'year', value: 'x' } ], y: yColumnOptions },
+      yLabelFormat
     };
 
     const hasTargetEmissions = targetEmissionsData &&
@@ -313,8 +339,18 @@ const parseTargetEmissionsData = createSelector(
   }
 );
 
+const getChartDomain = createSelector(
+  parseChartData,
+  data => {
+    if (!data) return null
+    const domainY = [ 'auto', 'auto'];
+    const domain = { x: [ 'auto', 'auto' ], y: domainY }
+    return domain
+  }
+)
+
 const getChartLoading = ({ metadata = {}, GHGEmissions = {} }) =>
-  metadata && metadata.ghgindo.loading || GHGEmissions && GHGEmissions.loading;
+  (metadata && metadata.ghgindo.loading) || (GHGEmissions && GHGEmissions.loading);
 
 const getDataLoading = createSelector(
   [ getChartLoading, parseChartData ],
@@ -333,6 +369,7 @@ const getEmissionTargetsForCharts = createSelector(
 
 export const getChartData = createStructuredSelector({
   data: parseChartData,
+  domain: getChartDomain,
   projectedData: parseTargetEmissionsData,
   config: getChartConfig,
   loading: getDataLoading,
@@ -351,3 +388,4 @@ export const getGHGEmissions = createStructuredSelector({
   provinceISO: getProvince,
   t: getTranslate
 });
+

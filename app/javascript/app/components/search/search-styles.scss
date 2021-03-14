@@ -1,0 +1,65 @@
+@import '~styles/settings';
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: end;
+}
+
+.input {
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  background-color: $white;
+  color: $theme-color;
+  border: $dropdown-border;
+  padding: 0 40px 0 15px;
+  font-size: $font-size;
+  font-family: $font-family-1;
+  transition: box-shadow 150ms ease-out;
+
+  &::placeholder {
+    color: $theme-color;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $theme-color-medium;
+  }
+
+  &:disabled {
+    opacity: 50%;
+  }
+}
+
+.iconSearch {
+  position: absolute;
+  right: 0;
+  width: 50px !important;
+  height: 50px !important;
+  fill: $black;
+}
+
+.v-transparent {
+  .input {
+    border: 2.5px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    color: $white;
+
+    &::placeholder {
+      color: $white;
+    }
+
+    &:focus {
+      border: 2.5px solid rgba(255, 255, 255, 0.5);
+    }
+
+    &:hover {
+      border: $dropdown-border;
+    }
+  }
+
+  .iconSearch {
+    fill: $white;
+  }
+}

@@ -47,8 +47,8 @@ class Section extends PureComponent {
 
   render() {
     const { route, section, provinceInfo, t } = this.props;
-    const title = t(`pages.${route.slug}.title`)
-               || (provinceInfo && provinceInfo.wri_standard_name);
+    const title = (provinceInfo && provinceInfo.wri_standard_name)
+                  || t(`pages.${route.slug}.title`);
     const description = t(`pages.${route.slug}.description`);
     const subsectionTitle = t(`pages.${route.slug}.${section.slug}.title`);
     const subsectionDescription = t(`pages.${route.slug}.${section.slug}.description`);

@@ -63,8 +63,24 @@ $downriver: #0a1941;
 $trout: #50535f;
 $iron: #d1d2d5;
 
+// Grays
+$gray1: #757584;
+$gray2: #cccdcf;
+$gray3: #f1f4fb;
+
+// border
+$dropdown-border: 2.5px solid $gray3;
+
+// line height
+$line-height-xs: 0.85;
+$line-height-small: 1.3;
+$line-height-medium: 1.62;
+$line-height-modal: 26px;
+$line-height-title: 54px;
+
 // Theme-colors
 $theme-color: $midnight-blue;
+$theme-color-medium: #0845cb;
 $action-color: $butterscotch;
 $border-color: $link-water;
 $footer-color: $midnight-blue;

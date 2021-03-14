@@ -38,7 +38,8 @@ class ResultsList extends PureComponent {
       handleMouseItemEnter,
       handleMouseItemLeave,
       handleClickOutside,
-      activeProvince
+      activeProvince,
+      searchText
     } = this.props;
 
     const renderItem = item =>

@@ -30,7 +30,7 @@ class GHGMap extends PureComponent {
 
     if (!provinceISO) return;
 
-    const metricQuery = query && query.metric && { metric: query.metric };
+    const metricQuery = query
 
     linkToProvinceGHG({
       section: 'regions-ghg-emissions',

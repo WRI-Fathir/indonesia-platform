@@ -7,6 +7,7 @@ import RegionsSelect from 'components/regions-select';
 import NationalSections from './sections/national-context';
 import ClimateGoalsSections from './sections/climate-goals';
 import RegionsSections from './sections/regions';
+import EmissionsSections from './sections/emissions-portal';
 
 const history = createHistory();
 const AVAILABLE_LOCALES = LANGUAGES_AVAILABLE.map(lang => lang.value);
@@ -15,6 +16,7 @@ export const HOME = 'location/HOME';
 export const NATIONAL_CONTEXT = 'location/NATIONAL_CONTEXT';
 export const CLIMATE_GOALS = 'location/CLIMATE_GOALS';
 export const REGIONS = 'location/REGIONS';
+export const EMISSIONS_PORTAL = 'location/EMISSIONS_PORTAL';
 
 export const routes = {
   [HOME]: {
@@ -47,14 +49,24 @@ export const routes = {
   [REGIONS]: {
     nav: true,
     navNestedMenu: true,
-    slug: 'regions',
     label: 'Province Module',
+    slug: 'regions',
     link: '/regions',
     path: '/:locale?/regions/:region?/:section?',
     module: '/regions',
     component: 'layouts/sections/sections',
     sections: RegionsSections,
     Child: RegionsSelect
+  },
+  [EMISSIONS_PORTAL]: {
+    nav: true,
+    slug: 'emissions-portal',
+    label: 'Emissions Portal',
+    link: '/emissions-portal',
+    path: '/:locale?/emissions-portal/:section?',
+    module: '/emissions-portal',
+    component: 'layouts/sections/sections',
+    sections: EmissionsSections
   },
   [NOT_FOUND]: {
     path: '/404',

@@ -2,54 +2,69 @@ platforms:
   - name: indonesia_platform
     sections:
       - name: locations
+        menu: Indonesia Platform
         importer: Locations::ImportLocations
         datasets:
           - locations
           - locations_id
       - name: locations_members
+        menu: Indonesia Platform
         importer: Locations::ImportLocationMembers
         datasets:
           - locations_groupings
       - name: historical_emissions
+        menu: Indonesia Platform
         importer: ImportHistoricalEmissions
         datasets:
           - historical_emissions_metadata_sectors
           - historical_emissions_data
       - name: emission_targets
+        menu: Indonesia Platform
         importer: ImportEmissionTargets
         datasets:
           - emission_targets
       - name: emission_activities
+        menu: Indonesia Platform
         importer: ImportEmissionActivities
         datasets:
           - emission_activities
+      - name: emission_projections
+        menu: Indonesia Platform
+        importer: ImportEmissionProjections
+        datasets:
+          - emission_projections
       - name: commitment_timeline
+        menu: Indonesia Platform
         importer: ImportCommitmentTimelineEntries
         datasets:
           - commitment_timeline_entries
           - commitment_timeline_entries_id
       - name: funding
+        menu: Indonesia Platform
         importer: ImportFundingOpportunities
         datasets:
           - opportunities
           - opportunities_id
       - name: indicators
+        menu: Indonesia Platform
         importer: ImportIndicators
         datasets:
           - indicators
           - indicators_id
-          - socioeconomics
+          - population
+          - economic
+          - social
           - pc_forest
           - pc_energy
           - pc_agriculture
-          - vulnerability_adaptivity
-          - adaptation_included
       - name: metadata
+        menu: Indonesia Platform
         importer: ImportDataSources
         datasets:
           - data_sources
           - data_sources_id
       - name: province_plans
+        menu: Indonesia Platform
         importer: ImportProvincePlans
         datasets:
           - development_plans
@@ -57,6 +72,34 @@ platforms:
           - climate_plans
           - climate_plans_id
       - name: data_translations
+        menu: Indonesia Platform
         importer: ImportDataTranslations
         datasets:
           - translations
+      - name: province_locations
+        menu: Province Platform
+        importer: Province::ImportLocations
+        datasets:
+          - province_locations
+          - province_locations_id
+      - name: province_locations_members
+        menu: Province Platform
+        importer: Province::ImportLocationMembers
+        datasets:
+          - province_locations_groupings
+      - name: province_indicators
+        menu: Province Platform
+        importer: Province::ImportIndicators
+        datasets:
+          - province_indicators
+          - province_indicators_id
+          - province_population
+          - province_economic
+          - province_social
+      - name: province_policies
+        menu: Province Platform
+        importer: Province::ImportPolicies
+        datasets:
+          - province_policies
+          - province_policies_id
+          - province_policies_data

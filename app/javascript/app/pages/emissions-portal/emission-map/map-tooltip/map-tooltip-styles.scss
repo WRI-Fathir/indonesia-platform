@@ -1,0 +1,25 @@
+@import '~styles/settings.scss';
+
+.tooltipContainer {
+  font-family: $font-family-1;
+  padding: 10px;
+  min-width: 250px;
+}
+
+.tooltipTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tooltipContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tooltipActivityName {
+  margin-right: 5px;
+}
+
+.noData {
+  font-style: italic;
+}

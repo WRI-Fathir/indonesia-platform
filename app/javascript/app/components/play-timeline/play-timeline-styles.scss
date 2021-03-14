@@ -1,0 +1,80 @@
+@import '../../styles/settings.scss';
+
+$timeline-width: 768px;
+$theme-secondary: #ffc735;
+$extreme-ticks-correction: 10px;
+
+.timelineContainer {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+
+  .timeline {
+    position: relative;
+    height: 8px;
+    width: $timeline-width;
+    background-color: $theme-color;
+    border-radius: 5px;
+    border-left: $extreme-ticks-correction solid $theme-color;
+    border-right: $extreme-ticks-correction solid $theme-color;
+    font-family: $font-family-1;
+    font-size: $font-size-s;
+    font-weight: $font-weight-light;
+    color: $midnight-blue;
+
+    .timelineMarker {
+      position: absolute;
+      display: inline-block;
+      height: 20px;
+      bottom: -6px;
+      width: 4px;
+      border-radius: 2px;
+      background-color: $theme-secondary;
+    }
+
+    .timelineTick {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+
+      &:first-child {
+        .timelineTickMark { display: none; }
+
+        .year {
+          transform: translateX(-$extreme-ticks-correction);
+        }
+      }
+
+      &:nth-last-child(2) {
+        .timelineTickMark { display: none; }
+
+        .year {
+          transform: translateX(calc(-100% + 10px));
+        }
+      }
+
+      .timelineTickMark {
+        position: absolute;
+        bottom: 0;
+        height: 12px;
+        display: inline-block;
+        width: 1px;
+        background-color: $black;
+        transition: left 1s;
+      }
+
+      .year {
+        position: absolute;
+        bottom: 20px;
+        transform: translateX(-50%);
+
+        &:hover {
+          color: $theme-secondary;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

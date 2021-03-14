@@ -1,0 +1,62 @@
+@import '~styles/settings.scss';
+
+.tooltip {
+  background: $white;
+  width: 16em;
+  padding: 15px;
+  box-shadow: 0 5px 15px 0 rgba(17, 55, 80, 0.15);
+  border-radius: 4px;
+
+  * {
+    font-family: $font-family-1;
+    font-size: $font-size-sm;
+  }
+}
+
+.tooltipHeader {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  color: $dusty-gray;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.yLabel {
+  color: $theme-color;
+  position: relative;
+}
+
+.yDataContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dot {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background-color: attr(data-dot);
+  width: 10px;
+  height: 10px;
+  border-radius: 6px;
+}
+
+.value {
+  color: $dusty-gray;
+}
+

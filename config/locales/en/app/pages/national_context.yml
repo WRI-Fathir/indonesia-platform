@@ -19,28 +19,6 @@ en:
           energy:
             title: Energy
             description: Lorem ipsum dolor sit amet
-        historical-emissions:
-          title: Historical Emissions
-          description: ''
-          labels:
-            break-by: Break by
-            region: Region
-            sector: Sector
-            gas: Gas
-            chart-type: Chart Type
-          break-by:
-            region-absolute: Region - Absolute
-            region-per_gdp: Region - Per GDP
-            region-per_capita: Region - Per Capita
-            sector-absolute: Sector
-            gas-absolute: Gas
-          region:
-            top-10: Top 10 Emitters
-            national: National
-          target-labels:
-            bau: BAU
-            quantified: Quantified
-            not-quantifiable: Not Quantifiable
         sectoral-activity:
           title: Emission-producing Activity
           description: ''
@@ -51,12 +29,20 @@ en:
           legend-no-data: No Data
           primary-source-of-emissions: Primary source of emissions
         climate-funding:
-          title: Climate Funding
+          title: Climate Funding Opportunity
           description: ''
+          labels:
+            support: Support
+            sector: Sector
+            chart-type: Chart Type
           view-more-link: View more
+          visit-website-link: Visit Website
           search-placeholder: Search
           table-headers:
+            source: Source
             project_name: Project name
             mode_of_support: Mode of support
             sectors_and_topics: Sectors and topics
             description: Description
+            last_update_year: Last Updated Year
+

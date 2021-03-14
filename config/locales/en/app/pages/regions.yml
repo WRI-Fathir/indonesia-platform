@@ -2,38 +2,35 @@ en:
   app:
     pages:
       regions:
+        title: Province Module
         regions-ghg-emissions:
-          title: GHG emissions and targets
+          title: Emisi GRK dan Target
           legendTitle: GHG Emissions in
-          description: ''
+          description: 'Inventarisasi emisi gas rumah kaca memainkan peran penting dalam melacak ambisi nasional dari waktu ke waktu, sehingga memastikan proses tersebut sejalan dengan target nasional untuk pengurangan emisi. Hal ini dapat mempengaruhi pengambilan keputusan untuk tindakan dan perencanaan iklim, khusus nya di tingkat nasional daerah.
+          
+          Jika dikonversi, stok karbon di Papua Barat setara dengan Emisi karbon dioksida sebesar 2.631 ton per hektar. Rencana 2021 program pemerintah adalah mengalih fungsikan hutan seluas 2.012.273 Ha. Konversi hutan ini akan memberikan kontribusi yang sangat nyata terhadap total emisi Papua Barat.'
           labels:
-            sector: Sector
+            sector: Sektor
             gas: Gas
-            metric: Metric
-          emission-target-by: Emission target by
-          projected-bau-by: Projected BAU emission by
+            metric: Indikator 
+          emission-target-by: Emissions target by
+          projected-bau-by: Projected BAU emissions by
         sectoral-circumstances:
-          title: Sectoral circumstances
+          title: Profil Sektoral 
           description: Lorem ipsum dolor sit amet
           forestry:
-            title: Forestry
+            title: Kehutanan
           energy:
-            title: Energy
+            title: Energi
           agriculture:
-            title: Agriculture
-        vulnerability-adaptivity:
-          title: Vulnerability and adaptivity
-          header: Climate vulnerability and adaptive capacity
-          description: Lorem ipsum dolor sit amet
-          sub-header: Vulnerability class and adaptative capacity
-          data-from: Data from
+            title: Pertanian
         climate-sectoral-plan:
-          title: Climate Sectoral Plan
-          header: Climate and development plans by sector
+          title: Perencanaan Iklim Sektoral
+          header: Perencanaan kebijakan iklim dan pembangunan sektoral
           description: Lorem ipsum dolor sit amet
-          development-plans: Development plans
-          climate-plans: Climate plans
-          search-placeholder: Search
+          development-plans: Rencana Pembangunan 
+          climate-plans: Rencana Kebijakan Iklim
+          search-placeholder: cari
           development-plans-subheader: Supportive Mission statement in RPJMD
           csv-download: Table data (CSV)
           pdf-download: Original file (PDF)
@@ -46,4 +43,83 @@ en:
             sector: sector
             sub_sector: Sub sector
             mitigation_activities: Mitigation activities
-
+        economy:
+          title: Ekonomi
+          description: Provinsi Papua Barat mencatat pertumbuhan sebesar -0.5% pada kuartal II 2019. Namun angka pertumbuhan ini lebih baik dibandingkan kuartal sebelumnya yang -12.83 %.
+          labels:
+            indicator: Indicator
+            district: District
+            sector: Sector
+            chart-type: Chart Type
+          indicators:
+            grdp: PRDB
+            grdp_capita: PRDB Per Kapita
+            grdp_growth: Pertumbuhan Ekonomi
+          unit:
+            year: Year
+            million-rp: Million Rp
+            percent: '%'
+            satuan: Jiwa
+          table:
+            indicator: indicator
+            unit: unit
+        region-population:
+          title: Populasi
+          description: Penduduk Papua Barat berjumlah 963.000 jiwa pada 2019. Jumlah tersebut terdiri atas 457.200 jiwa penduduk perempuan dan 506.400 jiwa laki-laki.
+          labels:
+            year: Year
+            district: District
+          switch:
+            population: Population
+            age-group-distribution: Age Group Distribution
+          cards:
+            card-1: Total population per district
+            card-2: Population growth per year
+            card-3: Population density per square kilometre
+            card-4: Gender ratio
+        social:
+          title: Sosial
+          description: Papua Barat dalam angka partisipasi kasar, mulai dari tingkat SD, SMP hingga SMA. Hal itu terlihat misalnya dari nilai ujian nasional dan kapasitas guru.
+          switch:
+            education: education
+            healthcare: healthcare
+          labels:
+            indicator: Indicator 
+            district: Regency
+          unit:
+            unit: ipm
+            percent: '%'
+        policy:
+          title: Melacak Kebijakan
+          section-one:
+            title: Melacak Kebijakan 
+            description: Upaya-upaya Papua Barat dalam rangka penurunan emisi diwujudkan dengan dikeluarkannya berbagai instrumen kebijakan.
+            goals:
+              title: Tujuan
+              description: Tujuan implemantasi Strategi dan Rencana Aksi di Provinsi Papua Barat
+              content:
+                - Mengurangi degradasi dan deforestasi akibat konversi lahan hutan dan alih fungsi kawasan hutan
+                - Meningkatkan upaya-upaya rehabilitasi lahan kritis dan pengembangan hutan tanaman rakyat
+                - Mengembangkan ekonomi kerakyatan sektor kehutanan melalui usaha pemanfaatan hasil hutan non kayu dan jasa hutan
+                - Meningkatkan kapasitas masyarakat dalam rangka adaptasi gejala perubahan iklim, resiko bencana dan kerawanan pangan
+            objectives:
+              title: Sasaran
+              description: Tujuan implemantasi Strategi dan Rencana Aksi di Provinsi Papua Barat
+              content:
+                - Mengurangi degradasi dan deforestasi akibat konversi lahan hutan dan alih fungsi kawasan hutan
+                - Meningkatkan upaya-upaya rehabilitasi lahan kritis dan pengembangan hutan tanaman rakyat
+                - Mengembangkan ekonomi kerakyatan sektor kehutanan melalui usaha pemanfaatan hasil hutan non kayu dan jasa hutan
+                - Meningkatkan kapasitas masyarakat dalam rangka adaptasi gejala perubahan iklim, resiko bencana dan kerawanan pangan
+          section-two:
+            title: Alur Kebijakan
+            labels:
+              indicator: indicator
+           
+        map:
+          title: Peta
+          description: Upaya-upaya Papua Barat dalam rangka penurunan emisi diwujudkan dengan dikeluarkannya berbagai instrumen kebijakan.
+          labels:
+            indicator: Indicator 
+            regency: Regency
+            sector: Sector
+            chart-type: Chart Type

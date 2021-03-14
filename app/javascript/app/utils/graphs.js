@@ -23,28 +23,20 @@ export const getTooltipConfig = columns => {
   return tooltip;
 };
 
-export const CHART_COLORS = [
-  '#00B4D2',
-  '#0677B3',
-  '#D2187C',
-  '#FFB400',
-  '#FF7800',
-  '#FF88AA',
-  '#AB0000',
-  '#20D5B7',
-  '#383F45',
-  '#CACCD0',
-  '#80DAE9',
-  '#93BBD9',
-  '#E98CBE',
-  '#FFDA80',
-  '#FFBC80',
-  '#FFC4D5',
-  '#D58080',
-  '#90EADB',
-  '#9C9FA2',
-  '#E5E6E8'
-];
+export const CHART_COLORS =[
+  '#3bc0c6',
+  '#5144d3',
+  '#e8871a',
+  '#da3490',
+  '#9089fb',
+  '#49e26f',
+  '#2780eb',
+  '#6f38b1',
+  '#dfbf01',
+  '#cb6f10',
+  '#2a8d6c',
+  '#9bec54'
+]
 
 export const getThemeConfig = (
   columns,

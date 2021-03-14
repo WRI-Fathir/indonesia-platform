@@ -24,6 +24,7 @@ module EmissionActivity
 
     translates :name, i18n: :sector
 
+    belongs_to :category, class_name: 'EmissionActivity::Category'
     belongs_to :parent,
                class_name: 'EmissionActivity::Sector',
                foreign_key: 'parent_id',

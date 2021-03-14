@@ -265,14 +265,12 @@ const getChartData = createSelector(
       const configYColumns = yColumns.map(y => ({
         label: y.label,
         value: `y${capitalize(y.value)}`,
-        stackId: 'stack'
       }));
 
       const allYColumns = filterOptions[CATEGORIES_QUERY_NAME][indicator.value];
       const configAllYColumns = allYColumns.map(y => ({
         label: y.label,
         value: `y${capitalize(y.value)}`,
-        stackId: 'stack'
       }));
 
       const domainY = unit && unit === '%' ? [ 0, 100 ] : [ 0, 'auto' ];

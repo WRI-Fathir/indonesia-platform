@@ -1,0 +1,67 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+  margin-bottom: $gutter-padding * 3;
+}
+
+.dropdowns {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (3,2,2.5,1,2,1.5));
+  }
+}
+
+.buttonWrapper {
+  margin-top: 22px;
+  max-width: 100px;
+}
+
+.chartMapContainer {
+  @include columns();
+
+  @media #{$tablet-landscape} {
+    @include columns($columns: (12));
+  }
+}
+
+.chartContainer {
+  min-height: 500px;
+}
+
+.tableContainer {
+  margin-top: 50px;
+}
+
+.legend {
+  margin-top: $gutter-padding;
+}
+
+.projectedLegend {
+  margin-left: 0;
+}
+
+.targetChartsContainer {
+  @include columns();
+
+  margin-top: 50px;
+
+  @media #{$tablet-landscape} {
+    @include columns(6);
+  }
+}
+
+.shareButton {
+  margin-top: 22px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}

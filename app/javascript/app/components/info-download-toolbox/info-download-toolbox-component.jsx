@@ -4,6 +4,8 @@ import cx from 'classnames';
 import { ButtonGroup, Button, Icon } from 'cw-components';
 import iconInfo from 'assets/icons/info';
 import downloadIcon from 'assets/icons/download';
+import downloadFileIcon from 'assets/icons/download-file';
+import shareIcon from 'assets/icons/share';
 import buttonThemes from 'styles/themes/button';
 import ReactTooltip from 'react-tooltip';
 import ModalMetadata from 'components/modal-metadata';
@@ -26,6 +28,14 @@ class InfoDownloadToolbox extends PureComponent {
   handleClickOutside = () => {
     this.setState({ opened: false });
   };
+
+  handleShareClick = () => {
+    const { shareableLink } = this.props;
+    if (shareableLink) {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${shareableLink}`
+      window.open(url, '_blank');
+    }
+  }
 
   handleDownloadClick = () => {
     const { downloadUri, locale } = this.props;
@@ -72,7 +82,9 @@ class InfoDownloadToolbox extends PureComponent {
       noDownload,
       infoTooltipdata,
       downloadTooltipdata,
-      downloadOptions
+      downloadOptions,
+      pdfUri,
+      shareableLink
     } = this.props;
 
     const { opened } = this.state;
@@ -121,6 +133,35 @@ class InfoDownloadToolbox extends PureComponent {
 );
     };
 
+    const renderPdfButton = () => (
+      <div
+        data-for="blueTooltip"
+        data-tip={downloadTooltipdata || 'Download pdf'}
+      >
+        <Button
+          onClick={this.handleDownloadClick}
+          theme={{
+              button: cx(buttonThemes.outline, styles.button, theme.infobutton)
+            }}
+        >
+          <Icon icon={downloadFileIcon} />
+        </Button>
+      </div>
+      );
+
+    const renderShareButton = () => (
+      <div data-for="blueTooltip" data-tip={downloadTooltipdata || 'Share'}>
+        <Button
+          onClick={this.handleShareClick}
+          theme={{
+              button: cx(buttonThemes.outline, styles.button, theme.infobutton)
+            }}
+        >
+          <Icon icon={shareIcon} />
+        </Button>
+      </div>
+      );
+
     return (
       <ButtonGroup
         theme={{
@@ -145,7 +186,13 @@ class InfoDownloadToolbox extends PureComponent {
           </Button>
         </div>
         <div>
+          {shareableLink && renderShareButton()}
+        </div>
+        <div>
           {!noDownload && renderDownloadButton()}
+        </div>
+        <div>
+          {pdfUri && renderPdfButton()}
         </div>
         <ReactTooltip
           id="blueTooltip"
@@ -172,7 +219,9 @@ InfoDownloadToolbox.propTypes = {
   setModalMetadata: PropTypes.func.isRequired,
   noDownload: PropTypes.bool,
   downloadOptions: PropTypes.array,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  pdfUri: PropTypes.string,
+  shareableLink: PropTypes.string
 };
 
 InfoDownloadToolbox.defaultProps = {
@@ -183,7 +232,9 @@ InfoDownloadToolbox.defaultProps = {
   infoTooltipdata: null,
   downloadTooltipdata: null,
   downloadOptions: [],
-  noDownload: false
+  noDownload: false,
+  pdfUri: null,
+  shareableLink: null
 };
 
 export default InfoDownloadToolbox;

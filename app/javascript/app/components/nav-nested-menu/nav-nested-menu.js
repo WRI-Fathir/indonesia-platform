@@ -1,3 +1,9 @@
+import { connect } from 'react-redux';
+import { getTranslate } from 'selectors/translation-selectors';
 import Component from './nav-nested-menu-component';
 
-export default Component;
+const mapStateToProps = state => ({
+  t: getTranslate(state)
+});
+
+export default connect(mapStateToProps, null)(Component);

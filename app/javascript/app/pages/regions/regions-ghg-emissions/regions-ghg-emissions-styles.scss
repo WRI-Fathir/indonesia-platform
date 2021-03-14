@@ -12,7 +12,7 @@
   @include columns();
 
   @media #{$tablet-landscape} {
-    @include columns($columns: (3,3,3.8,2.1));
+    @include columns($columns: (2.5,3,2.5,2,2));
   }
 }
 
@@ -25,7 +25,7 @@
   @include columns();
 
   @media #{$tablet-landscape} {
-    @include columns($columns: (7.5,4.5));
+    @include columns($columns: (8,4));
   }
 }
 
@@ -48,5 +48,16 @@
 
   @media #{$tablet-landscape} {
     @include columns(6);
+  }
+}
+
+.shareButton {
+  margin-top: 22px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
   }
 }

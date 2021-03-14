@@ -17,7 +17,7 @@ export default {
   }),
   [actions.fetchGHGEmissionsReady]: (state, { payload }) => {
     if (!isActionValid(state, payload.timestamp)) return state;
-
+    
     return { ...state, loading: false, data: payload.data };
   },
   [actions.fetchGHGEmissionsFail]: (state, { payload }) => {

@@ -31,3 +31,15 @@ $dropdown-min-width: 265px;
 .legend {
   margin-top: 15px;
 }
+
+.shareButton {
+  margin-top: 22px;
+  margin-left: 10px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}

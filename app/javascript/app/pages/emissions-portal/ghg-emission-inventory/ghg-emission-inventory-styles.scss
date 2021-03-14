@@ -1,0 +1,84 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+.page {
+  @include row();
+
+  margin-top: $gutter-padding;
+}
+
+.filtersGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 25px;
+}
+
+.filters {
+  @include columns($columns: 12);
+}
+
+.buttonWrapper {
+  margin-top: 22px;
+  max-width: 100px;
+}
+
+.switch {
+  @include columns($columns: 12);
+
+  .switchWrapper {
+    margin-left: $gutter-padding / 2;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px $box-shadow;
+    border: 2px solid $border-color;
+    color: $black;
+    margin-bottom: $gutter-padding + 10px;
+  }
+
+  .option {
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+  }
+
+  .checkedOption {
+    background-color: $dark-blue;
+  }
+}
+
+.chartContainer {
+  min-height: 500px;
+}
+
+.legend {
+  margin-top: $gutter-padding;
+}
+
+.projectedLegend {
+  margin-left: 0;
+}
+
+@media #{$tablet-landscape} {
+  .filters {
+    @include columns($columns: (3));
+  }
+
+  .switch {
+    @include columns($columns: 4);
+  }
+
+  .filtersGroup {
+    flex-direction: row;
+  }
+}
+
+.shareButton {
+  margin-top: 22px;
+  margin-left: 10px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}

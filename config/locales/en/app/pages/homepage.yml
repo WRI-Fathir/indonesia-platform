@@ -21,6 +21,11 @@ en:
           description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
           paging: Annual emissions
           button: Go to GHG target
+        slide-four:
+          title: West Papua Module
+          description: Indonesia’s 34 provinces are environmentally diverse, ranging from dense rainforest to mountainous terrain, and from agricultural areas to densely populated cities. Each of these landscapes present a distinct challenge in tackling climate change. Each province page provides provincial emission data, an overview of various economic sectors and a link between climate action and the province's development plan. Explore the circumstances and compare information across provinces in Indonesia.
+          paging: West Papua Module
+          button: Go to West Papua Module
         climate-watch:
           disclaimer: Improving understanding of the possible policy and development paths that could lead to decarbonization of the economy in different countries by providing high-quality, global data.
           button: Explore The Global Site

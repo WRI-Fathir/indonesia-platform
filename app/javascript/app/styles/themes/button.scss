@@ -31,3 +31,14 @@
 
   border: solid 1px $border-color;
 }
+
+.darkBlue {
+  color: #fff;
+  background-color: #213244;
+  width: 270px;
+  border-radius: 30px;
+
+  &.disabled {
+    color: $border-color;
+  }
+}

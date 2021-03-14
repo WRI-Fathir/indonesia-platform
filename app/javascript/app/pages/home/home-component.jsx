@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import Province from 'components/province';
 import CwDisclaimer from 'components/cw-disclaimer';
 import HighlightedStories from 'components/stories';
+import { TabletLandscape } from 'components/responsive';
 import SectionsSlideshow from './sections-slideshow';
+import GHGMap from './ghg-map';
 
 import styles from './home-styles.scss';
 

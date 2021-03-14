@@ -1,6 +1,9 @@
 import { createStructuredSelector, createSelector } from 'reselect';
 import isEmpty from 'lodash/isEmpty';
 import uniq from 'lodash/uniq';
+import flatten from 'lodash/flatten';
+import trim from 'lodash/trim';
+import sortBy from 'lodash/sortBy';
 import { getTranslate } from 'selectors/translation-selectors';
 import { createTextSearchSelector } from 'selectors/util-selectors';
 
@@ -33,8 +36,29 @@ const getSources = createSelector(getData, data => {
   return uniq(data.map(d => d.source));
 });
 
+const getSupports = createSelector(getData, data => {
+  if (isEmpty(data)) return [];
+  const list = data.map(x => x.mode_of_support)
+                   .map(y => y.split(','))
+                      
+  return sortBy(uniq(flatten(list).map(z => trim(z)))
+           .map(x => ({label: x, value: x})), ['value'])
+})
+
+const getSectors = createSelector(getData, data => {
+  if (isEmpty(data)) return [];
+
+  const list = data.map(x => x.sectors_and_topics)
+                   .map(y => y.split(','))
+                      
+  return sortBy(uniq(flatten(list).map(z => trim(z)))
+           .map(x => ({label: x, value: x})), ['value'])
+})
+
 export const mapStateToProps = createStructuredSelector({
   data: createTextSearchSelector(getData, getSearch),
+  supports: getSupports,
+  sectors: getSectors,
   titleLinks: getLinkableColumnsSchema,
   sources: getSources,
   t: getTranslate

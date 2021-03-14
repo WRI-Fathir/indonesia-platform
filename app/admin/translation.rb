@@ -1,4 +1,5 @@
 ActiveAdmin.register_page 'Translations' do
+  menu priority: 5
   content title: 'Translations' do
     para 'This page consists of website texts that could be changed dynamically for all supported languages.'
 

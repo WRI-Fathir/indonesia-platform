@@ -1,25 +1,29 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { NavLink } from 'redux-first-router-link';
-import styles from './nav-styles.scss';
-
-const renderActions = () => {
-  // return (
-  //   <div className={styles.actions}>
-  //     Download and about links
-  //   </div>
-  // );
-};
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { NavLink } from 'redux-first-router-link'
+import styles from './nav-styles.scss'
 
 class Nav extends PureComponent {
   render() {
-    const { routes, theme, parent, provinceInfo, t, locale } = this.props;
+    const { routes, theme, parent, provinceInfo, t, locale } = this.props
+
+    const filteredRoutes = routes.filter((route) => {
+      if (!parent || parent.slug !== 'regions') return route
+      if (!provinceInfo || !provinceInfo.iso_code3) return route
+
+      return (
+        (route.member === 'all' || route.member === provinceInfo.iso_code3) &&
+        route.exclude !== provinceInfo.iso_code3
+      )
+    })
+
+
     return (
       <nav className={theme.nav}>
-        {routes.map(route => {
+        {filteredRoutes.map((route) => {
+          const isoCode = provinceInfo && provinceInfo.iso_code3
           if (route.province) {
-            const isoCode = provinceInfo && provinceInfo.iso_code3;
             return (
               <NavLink
                 exact={route.exact || false}
@@ -30,13 +34,11 @@ class Nav extends PureComponent {
                 onTouchStart={undefined}
                 onMouseDown={undefined}
               >
-                {
-                  parent
-                    ? t(`pages.${parent.slug}.${route.slug}.title`)
-                    : t(`pages.${route.slug}.title`)
-                }
+                {parent
+                  ? t(`pages.${parent.slug}.${route.slug}.title`)
+                  : t(`pages.${route.slug}.title`)}
               </NavLink>
-            );
+            )
           }
           return (
             <NavLink
@@ -48,17 +50,14 @@ class Nav extends PureComponent {
               onTouchStart={undefined}
               onMouseDown={undefined}
             >
-              {
-                parent
-                  ? t(`pages.${parent.slug}.${route.slug}.title`)
-                  : t(`pages.${route.slug}.title`)
-              }
+              {parent
+                ? t(`pages.${parent.slug}.${route.slug}.title`)
+                : t(`pages.${route.slug}.title`)}
             </NavLink>
-          );
+          )
         })}
-        {renderActions()}
       </nav>
-    );
+    )
   }
 }
 
@@ -68,9 +67,9 @@ Nav.propTypes = {
   parent: PropTypes.object,
   theme: PropTypes.shape({ nav: PropTypes.string, link: PropTypes.string }),
   provinceInfo: PropTypes.object,
-  locale: PropTypes.string
-};
+  locale: PropTypes.string,
+}
 
-Nav.defaultProps = { theme: {}, parent: null, provinceInfo: null, locale: '' };
+Nav.defaultProps = { theme: {}, parent: null, provinceInfo: null, locale: '' }
 
-export default Nav;
+export default Nav

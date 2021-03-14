@@ -1,0 +1,242 @@
+@import '~styles/settings.scss';
+@import '~styles/layout.scss';
+
+.mapSection {
+  background-color: $link-water;
+  position: relative;
+}
+
+.page {
+  @include row(6,6);
+
+  margin-top: $gutter-padding;
+}
+
+.mapContainer {
+  @include row();
+  position: relative;
+}
+
+.filtersGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+.filters {
+  @include xy-gutters($gutter-position: ('bottom'));
+}
+
+.buttonWrapper {
+  max-width: 100px;
+}
+
+.map {
+  height: calc(100% - 100px);
+  position: relative;
+}
+
+.timelineWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: -100px !important;
+  z-index: 2 !important;
+}
+
+.cw__play-timeline-styles_timeline {
+  width: 750px;
+}
+
+.legend {
+  margin-bottom: 30px;
+  margin-left: 75px;
+  min-height: 150px;
+  height: 150px !important;
+  margin-top: -300px !important;
+}
+
+:global {
+  .tooltip {
+    &.__react_component_tooltip.type-dark {
+      color: $black;
+      background-color: $white;
+      opacity: 1;
+
+      &::after {
+        border-top-color: $white;
+      }
+    }
+  }
+}
+
+@media #{$tablet-landscape} {
+  .filtersGroup {
+    flex-direction: row;
+  }
+
+  .filters {
+    @include columns($columns: (3,3,2));
+
+    margin-bottom: 0;
+  }
+
+  .legend {
+    margin-top: -100px;
+    margin-bottom: 0;
+  }
+
+  .buttonWrapper {
+    align-self: flex-end;
+  }
+}
+
+.mapButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 30%;
+  top: 0;
+  // bottom: 0;
+  width: 40%;
+  height: 100px;
+  background-color: transparent;
+  -webkit-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  margin: 0;
+}
+
+.mapButton {
+  display: flex;
+  padding: 15px 5px;
+  flex-direction: column;
+  flex: 1;
+  cursor: pointer;
+  border-top: 1px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.mapButtonActive {
+  background-color: #cfd6e6;
+  display: flex;
+  padding: 15px 5px;
+  flex-direction: column;
+  flex: 1;
+  cursor: pointer;
+  border-top: 1px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.buttonText {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.sectorWrapper {
+  display: flex;
+  flex : 1;
+}
+
+.buttonIconWrapper {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sectorDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #ffffff;
+  -webkit-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  margin: 0;
+  z-index: 10;
+  -webkit-animation: slide-back 0.5s forwards;
+  -webkit-animation-delay: 0s;
+  animation: slide-back 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slide-back {
+  100% { left: -20%; }
+}
+
+@keyframes slide-back {
+  100% { left: -20%; }
+}
+
+.sectorDescriptionContainerActive {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -20%;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #ffffff;
+  -webkit-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  box-shadow: 2px 0px 7px 0px rgba(158,158,158,1);
+  margin: 0;
+  z-index: 10;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 0s;
+  animation: slide 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slide {
+  100% { left: 0; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
+}
+
+.loadingOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareButton {
+  margin-top: 22px;
+  margin-left: 10px;
+  width: 120px;
+  color: $theme-color;
+  background-color: $action-color;
+
+  .shareText {
+    margin-left: 10px;
+  }
+}
+
+
+
+
+
+
+
+

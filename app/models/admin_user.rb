@@ -23,7 +23,7 @@ class AdminUser < SecondBase::Base
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
-  validates :role, inclusion: {in: %w(superuser admin), message: '%{value} is not a valid role'}
+  validates :role, inclusion: {in: %w(superuser admin admin_province admin_national), message: '%{value} is not a valid role'}
 
   def superuser?
     role.eql?('superuser')

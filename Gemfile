@@ -13,7 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker'
+gem 'webpacker', '4.2.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,6 +28,13 @@ gem 'secondbase'
 gem 'activeadmin'
 gem 'devise'
 gem 'i18n-active_record', require: 'i18n/active_record'
+# read .env environment variables
+gem 'dotenv-rails'
+# Add Rack CORS for setup cross origin HTTP
+gem 'rack-cors'
+# Coffee rails for activeadmin depedencies
+gem 'coffee-rails', '~> 5.0.0'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -50,7 +57,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'dotenv-rails'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -58,6 +64,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
+  # capistrano for deploying
+  gem 'capistrano', '3.11.2'
+  gem 'capistrano-bundler', '~> 1.6'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rvm'
 end
 
 group :test do
@@ -67,15 +79,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-git 'https://github.com/ClimateWatch-Vizzuality/climate-watch-gems.git' do
+git 'https://github.com/anggiaramadhan/climate-watch-gems', branch: 'develop' do
   gem 'climate_watch_engine', '~> 1.4.3'
-  gem 'cw_locations', '~> 1.4.0', require: 'locations'
-  gem 'cw_historical_emissions', '~> 1.5.0', require: 'historical_emissions'
+  gem 'cw_locations', '~> 1.4.1', require: 'locations'
+  gem 'cw_historical_emissions', '~> 1.5.1', require: 'historical_emissions'
   gem 'cw_data_uploader', '~> 0.4.0', require: 'data_uploader'
 end
 
 # for debugging
-# gem 'climate_watch_engine', '~> 1.4.0', path: '../climate-watch-gems' #
-# gem 'cw_locations', '~> 1.4.0', require: 'locations', path: '../climate-watch-gems' #
-# gem 'cw_historical_emissions', '~> 1.4.0', require: 'historical_emissions', path: '../climate-watch-gems'
+# gem 'climate_watch_engine', '~> 1.4.3', path: '../climate-watch-gems' #
+# gem 'cw_locations', '~> 1.4.1', require: 'locations', path: '../climate-watch-gems' #
+# gem 'cw_historical_emissions', '~> 1.5.1', require: 'historical_emissions', path: '../climate-watch-gems'
 # gem 'cw_data_uploader', '~> 0.4.0', require: 'data_uploader', path: '../climate-watch-gems'
