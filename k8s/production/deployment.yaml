@@ -92,7 +92,7 @@ spec:
                 secretKeyRef:
                   key: CW_PLATFORMS_S3_SECRET_ACCESS_KEY
                   name: appsecrets
-          image: vizzuality/indonesia-platform
+          image: gfwdockerhub/indonesia-platform
           imagePullPolicy: Always
           name: indonesia-platform
           ports:

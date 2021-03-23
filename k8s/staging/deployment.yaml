@@ -94,7 +94,7 @@ spec:
                   name: appsecrets
             - name: REDIS_SERVER
               value: redis://localhost:6379
-          image: vizzuality/indonesia-platform
+          image: gfwdockerhub/indonesia-platform
           imagePullPolicy: Always
           name: indonesia-platform-staging
           ports:
@@ -140,7 +140,7 @@ spec:
                   name: dbsecrets
             - name: REDIS_SERVER
               value: redis://localhost:6379
-          image: vizzuality/indonesia-platform
+          image: gfwdockerhub/indonesia-platform
           imagePullPolicy: Always
           name: indonesia-platform-sidekiq
           resources:
