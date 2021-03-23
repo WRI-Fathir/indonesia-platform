@@ -43,7 +43,9 @@ spec:
                 topologyKey: kubernetes.io/hostname
               weight: 100
       containers:
-        - env:
+        - args:
+            - start
+          env:
             - name: CW_FILES_PREFIX
               value: climatewatch.org/www.climatewatch.org/indonesia/
             - name: RACK_ENV
@@ -76,7 +78,7 @@ spec:
             - name: SHARED_POSTGRES_URL
               valueFrom:
                 secretKeyRef:
-                  key: climate_watch_shared_db_production
+                  key: CW_SHARED_POSTGRES_URL
                   name: dbsecrets
             - name: S3_BUCKET_NAME
               value: wri-sites

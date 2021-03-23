@@ -1,5 +1,5 @@
 FROM ruby:2.5.1
-MAINTAINER Simao Belchior <simao.belchior@vizzuality.com>
+MAINTAINER Vizzuality <hello@vizzuality.com>
 
 ENV NAME=cw-indonesia
 ENV RAKE_ENV=production
