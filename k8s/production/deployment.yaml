@@ -1,99 +1,114 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: climate-watch
   labels:
-    name: {name}
-  name: {name}
+    name: indonesia-platform
+  name: indonesia-platform
 spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
   revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      name: indonesia-platform
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        name: {name}
+        name: indonesia-platform
     spec:
-      tolerations:
-      - key: "type"
-        operator: "Equal"
-        value: "webapps"
-        effect: "NoSchedule"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchExpressions:
-              - key: type
-                operator: In
-                values:
-                - webapps
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - webapps
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: name
-                  operator: In
-                  values:
-                  - {name}
-              topologyKey: kubernetes.io/hostname
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: name
+                      operator: In
+                      values:
+                        - indonesia-platform
+                topologyKey: kubernetes.io/hostname
+              weight: 100
       containers:
-      - name: {name}
-        image: vizzuality/{name}
-        imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "128Mi"
-        env:
-          - name: CW_FILES_PREFIX
-            value: 'climatewatch.org/www.climatewatch.org/indonesia/'
-          - name: RACK_ENV
-            value: production
-          - name: RAILS_ENV
-            value: production
-          - name: PORT
-            value: "3000"
-          - name: RAILS_SERVE_STATIC_FILES
-            value: "true"
-          - name: PASSWORD_PROTECT
-            value: "false"
-          - name: RAILS_LOG_TO_STDOUT
-            value: "true"
-          - name: HTTP_AUTH_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: appsecrets
-                key: CW_AUTH_USERNAME
-          - name: HTTP_AUTH_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: appsecrets
-                key: CW_AUTH_PASSWORD
-          - name: POSTGRES_URL
-            valueFrom:
+        - args:
+            - start
+          env:
+            - name: CW_FILES_PREFIX
+              value: climatewatch.org/www.climatewatch.org/indonesia/
+            - name: RACK_ENV
+              value: production
+            - name: RAILS_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+            - name: RAILS_SERVE_STATIC_FILES
+              value: "true"
+            - name: PASSWORD_PROTECT
+              value: "false"
+            - name: RAILS_LOG_TO_STDOUT
+              value: "true"
+            - name: HTTP_AUTH_USERNAME
+              valueFrom:
                 secretKeyRef:
-                  name: dbsecrets
+                  key: CW_AUTH_USERNAME
+                  name: appsecrets
+            - name: HTTP_AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: CW_AUTH_PASSWORD
+                  name: appsecrets
+            - name: POSTGRES_URL
+              valueFrom:
+                secretKeyRef:
                   key: CW_INDONESIA_POSTGRES_URL
-          - name: SHARED_POSTGRES_URL
-            valueFrom:
-              secretKeyRef:
                   name: dbsecrets
-                  key: climate_watch_shared_db_production
-          - name: S3_BUCKET_NAME
-            value: "wri-sites"
-          - name: AWS_REGION
-            value: "eu-west-1"
-          - name: AWS_ACCESS_KEY_ID
-            valueFrom:
+            - name: SHARED_POSTGRES_URL
+              valueFrom:
                 secretKeyRef:
-                  name: appsecrets
+                  key: CW_SHARED_POSTGRES_URL
+                  name: dbsecrets
+            - name: S3_BUCKET_NAME
+              value: wri-sites
+            - name: AWS_REGION
+              value: eu-west-1
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
                   key: CW_PLATFORMS_S3_ACCESS_KEY
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-                secretKeyRef:
                   name: appsecrets
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
                   key: CW_PLATFORMS_S3_SECRET_ACCESS_KEY
-
-        ports:
-          - containerPort: 3000
-
+                  name: appsecrets
+          image: gfwdockerhub/indonesia-platform
+          imagePullPolicy: Always
+          name: indonesia-platform
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          resources:
+            requests:
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: { }
+      terminationGracePeriodSeconds: 30
