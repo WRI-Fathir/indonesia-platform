@@ -73,12 +73,12 @@ spec:
             - name: POSTGRES_URL
               valueFrom:
                 secretKeyRef:
-                  key: CW_INDONESIA_POSTGRES_URL
+                  key: CW_INDONESIA_POSTGRES_URL_STAGING
                   name: dbsecrets
             - name: SHARED_POSTGRES_URL
               valueFrom:
                 secretKeyRef:
-                  key: CW_SHARED_POSTGRES_URL
+                  key: CW_SHARED_POSTGRES_URL_STAGING
                   name: dbsecrets
             - name: S3_BUCKET_NAME
               value: wri-sites
@@ -94,6 +94,8 @@ spec:
                 secretKeyRef:
                   key: CW_PLATFORMS_S3_SECRET_ACCESS_KEY
                   name: appsecrets
+            - name: REDIS_SERVER
+              value: redis://localhost:6379
           image: gfwdockerhub/indonesia-platform
           imagePullPolicy: Always
           name: indonesia-platform
@@ -102,7 +104,64 @@ spec:
               protocol: TCP
           resources:
             requests:
+              cpu: "0"
+              memory: "0"
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - args:
+            - sidekiq
+          env:
+            - name: CW_FILES_PREFIX
+              value: climatewatch.org/staging.climatewatch.org/indonesia/
+            - name: AWS_REGION
+              value: eu-west-1
+            - name: RACK_ENV
+              value: production
+            - name: RAILS_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+            - name: RAILS_SERVE_STATIC_FILES
+              value: "true"
+            - name: S3_BUCKET_NAME
+              value: wri-sites
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: CW_PLATFORMS_S3_ACCESS_KEY
+                  name: appsecrets
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: CW_PLATFORMS_S3_SECRET_ACCESS_KEY
+                  name: appsecrets
+            - name: POSTGRES_URL
+              valueFrom:
+                secretKeyRef:
+                  key: CW_INDONESIA_POSTGRES_URL_STAGING
+                  name: dbsecrets
+            - name: REDIS_SERVER
+              value: redis://localhost:6379
+          image: gfwdockerhub/indonesia-platform
+          imagePullPolicy: Always
+          name: indonesia-platform-sidekiq
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
               memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - image: redis
+          imagePullPolicy: Always
+          name: redis
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "0"
+              memory: "0"
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
       dnsPolicy: ClusterFirst

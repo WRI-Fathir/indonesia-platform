@@ -74,11 +74,7 @@ Ta-da!
 
 ## Deploying the app
 
-The application includes a [Jenkins](https://www.jenkins.io/) script file (`Jenkinsfile`) meant to be used with the [RW API production Jenkins](https://resource-watch.github.io/doc-api/developer.html#ci-cd) for deployment. It currently supports deploying two branches:
-- The source code from the `master` branch is deployed and available through [https://indonesia.climatewatchdata.org](https://indonesia.climatewatchdata.org) 
-- The source code from the `staging` branch is deployed and available through [https://indonesia-platform-staging.vizzuality.com](https://indonesia-platform-staging.vizzuality.com) 
-
-The two instances are meant to be independent from each other. The `master` branch, corresponding to the production environment, requires manual confirmation at the end of the Jenkins pipeline process, to prevent any accidental deployments to production.
+The application includes a [Jenkins](https://www.jenkins.io/) script file (`Jenkinsfile`) meant to be used with the [RW API production Jenkins](https://resource-watch.github.io/doc-api/developer.html#ci-cd) for deployment. It currently supports deploying the source code from the `master` branch, which will be made available through [https://indonesia.climatewatchdata.org](https://indonesia.climatewatchdata.org).
 
 ## Frontend Architectural choices
 
