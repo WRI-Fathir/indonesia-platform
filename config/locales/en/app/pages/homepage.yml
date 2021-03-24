@@ -14,7 +14,7 @@ en:
         slide-two:
           title: Socioeconomic indicators
           description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-          paging: National context
+          paging: National Context
           button: Go to national context
         slide-three:
           title: Greenhouse Gas Emissions and Targets
