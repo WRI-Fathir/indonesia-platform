@@ -4,7 +4,7 @@
   "scripts": {
     "start": "yarn js:server & yarn rails:server",
     "js:server": "yarn install && ./bin/webpack-dev-server",
-    "rails:server": "bundle exec rails s",
+    "rails:server": "bundle exec rails s -b 0.0.0.0",
     "reinstall": "rm -rf node_modules && yarn install",
     "precommit": "lint-staged",
     "lint": "eslint --ext js --ext jsx .",
