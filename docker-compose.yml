@@ -13,16 +13,14 @@ services:
       - .env
     environment:
       - PORT=3000
-    restart: always
     container_name: cw-indonesia-app
     depends_on:
       - postgres
     volumes:
-      - .:/usr/src/cw-indonesiaø
+      - .:/usr/src/cw-indonesia
   postgres:
     image: postgres:9.6
     container_name: cw-indonesia-postgres
-    restart: always
     ports:
       - "5432"
     environment:
@@ -36,5 +34,17 @@ services:
     container_name: cw-indonesia-redis
     ports:
       - "6379:6379"
+  sidekiq:
+    depends_on:
+      - postgres
+      - redis
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    command: sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/usr/src/cw-indonesia
+    env_file:
+      - .env
 volumes:
   db_data:
