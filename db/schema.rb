@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_045456) do
+ActiveRecord::Schema.define(version: 2020_07_20_021841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,21 +79,11 @@ ActiveRecord::Schema.define(version: 2020_09_17_045456) do
     t.index ["section_id"], name: "index_datasets_on_section_id"
   end
 
-  create_table "emission_activity_categories", force: :cascade do |t|
-    t.text "name", null: false
-    t.jsonb "translations", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_emission_activity_categories_on_name", unique: true
-  end
-
   create_table "emission_activity_sectors", force: :cascade do |t|
     t.text "name"
     t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_emission_activity_sectors_on_category_id"
     t.index ["name", "parent_id"], name: "index_emission_activity_sectors_on_name_and_parent_id", unique: true
     t.index ["parent_id"], name: "index_emission_activity_sectors_on_parent_id"
   end
@@ -224,8 +214,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_045456) do
 
   create_table "historical_emissions_metrics", force: :cascade do |t|
     t.string "name", null: false
-    t.string "unit", null: false
-    t.index ["name", "unit"], name: "index_historical_emissions_metrics_on_name_and_unit", unique: true
+    t.text "unit"
   end
 
   create_table "historical_emissions_records", force: :cascade do |t|
@@ -420,7 +409,6 @@ ActiveRecord::Schema.define(version: 2020_09_17_045456) do
   end
 
   add_foreign_key "datasets", "sections"
-  add_foreign_key "emission_activity_sectors", "emission_activity_categories", column: "category_id", on_delete: :cascade
   add_foreign_key "emission_activity_sectors", "emission_activity_sectors", column: "parent_id", on_delete: :cascade
   add_foreign_key "emission_activity_values", "emission_activity_sectors", column: "sector_id", on_delete: :cascade
   add_foreign_key "emission_activity_values", "locations", on_delete: :cascade
