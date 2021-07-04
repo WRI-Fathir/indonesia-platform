@@ -20,7 +20,7 @@ module Api
           respond_to do |format|
             format.json do
               render json: province_metadata,
-                     each_serializer: Api::V1::Province::MetadataSerializer
+                     each_serializer: ::Api::V1::Province::MetadataSerializer
             end
           end
         end
