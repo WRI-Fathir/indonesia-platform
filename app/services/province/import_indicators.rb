@@ -16,8 +16,6 @@ class Province::ImportIndicators
   def call
     return unless all_headers_valid?
 
-    cleanup
-
     ActiveRecord::Base.transaction do
       import_indicators
       import_indicators_id
