@@ -23,5 +23,10 @@ en:
         ghg-emission-inventory-cait:
           title: GHG Emissions Inventory - CAIT
           description: Keeping track of greenhouse gas emissions over time ensure that decision-making align with national targets to reduce emissions. It could after deciton making for climate action and planning at the national and sub-national levels.
+          region:
+            national: National
+          break-by:
+            region-absolute: Region - Absolute
+            sector-absolute: Sector - Absolute
         emission-map:
           title: Map
