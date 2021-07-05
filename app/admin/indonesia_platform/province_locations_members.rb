@@ -29,7 +29,7 @@ ActiveAdmin.register_page 'Indonesia Platform Province Locations Members' do
     end
 
     def import_worker
-      DataUploader::BaseImportWorker.perform_async(section.id, 'Province::ImportLocationMembers', current_admin_user.email)
+      DataUploader::BaseImportWorker.perform_async(section.id, 'Province::ImportLocationsMembers', current_admin_user.email)
     end
 
     def section_repository
@@ -43,7 +43,8 @@ ActiveAdmin.register_page 'Indonesia Platform Province Locations Members' do
 
   menu parent: 'Province Platform',
        label: section_name.split('_').map(&:capitalize).join(' '),
-       if: proc { DataUploader::Helpers::Ability.can_view?(platform_name) }
+       if: proc { DataUploader::Helpers::Ability.can_view?(platform_name) },
+       priority: 1
 
   section_proc = proc {
     DataUploader::Repositories::SectionRepository.new.filter_by_section_and_platform(

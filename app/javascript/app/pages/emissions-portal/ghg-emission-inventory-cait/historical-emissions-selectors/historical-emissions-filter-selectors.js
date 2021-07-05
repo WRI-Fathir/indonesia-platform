@@ -13,13 +13,14 @@ import {
   withAllSelected
 } from 'selectors/filters-selectors';
 
+import { get } from 'lodash-es';
+
 import {
   getEmissionsData,
   getMetadataData,
   getTop10EmittersOptionLabel,
   getSelectedAPI
 } from './historical-emissions-get-selectors';
-import { get } from 'lodash-es';
 
 const { COUNTRY_ISO } = process.env;
 
@@ -31,10 +32,6 @@ const CHART_TYPE_OPTIONS = [
 
 const SOURCE_OPTIONS = [
   { label: 'CAIT', name: 'CAIT', value: 'CAIT', api: API.cw }
-];
-
-const GAS_OPTIONS = [
-  { label: 'ALL GHG', name: 'ALL GHG', value: 'ALL GHG', api: API.cw }
 ];
 
 const DEFAULTS = {
@@ -54,14 +51,14 @@ export const getNationalOption = createSelector(
     return {
       ...findOption(meta.location, COUNTRY_ISO, 'iso_code3'),
       code: COUNTRY_ISO,
-      label: t('pages.national-context.historical-emissions.region.national'),
+      label: t('pages.emissions-portal.ghg-emission-inventory-cait.region.national'),
       override: true
     };
   }
 );
 
 const getBreakByOptions = createSelector([ getTranslate ], t => {
-  const options = t('pages.national-context.historical-emissions.break-by', {
+  const options = t('pages.emissions-portal.ghg-emission-inventory-cait.break-by', {
     default: {}
   });
   return Object
@@ -128,9 +125,9 @@ const getTop10EmittersIsoCodes = emissionData => {
         p => p.metric === METRIC.absolute && p.sector === SECTOR_TOTAL
       );
 
-      const totalEmissionValue = emissionObject && emissionObject.emissions
+      const totalEmissionValue = (emissionObject && emissionObject.emissions
           .filter(e => e.year === recentYear)
-          .map(e => e.value)[0] || 0;
+          .map(e => e.value)[0]) || 0;
 
       return { iso, value: totalEmissionValue };
     });
@@ -246,9 +243,9 @@ const getBreakBySelected = createSelector(getSelectedOptions, options => {
 
 export const getModelSelected = createSelector(
   getBreakBySelected,
-  breakBySelected => breakBySelected && breakBySelected.modelSelected || null
+  breakBySelected => (breakBySelected && breakBySelected.modelSelected) || null
 );
 export const getMetricSelected = createSelector(
   getBreakBySelected,
-  breakBySelected => breakBySelected && breakBySelected.metricSelected || null
+  breakBySelected => (breakBySelected && breakBySelected.metricSelected) || null
 );

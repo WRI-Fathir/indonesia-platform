@@ -2,6 +2,7 @@ import { createStructuredSelector, createSelector } from 'reselect';
 import { getTranslate } from 'selectors/translation-selectors';
 import { format } from 'd3-format';
 import uniq from 'lodash/uniq';
+import isEmpty from 'lodash/isEmpty';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import sortBy from 'lodash/sortBy';
@@ -105,6 +106,8 @@ const getSelectedIndicatorsValues = createSelector(
   [ getPopulationIndicatorsValues, getSelectedIndicatorCode ],
   (indicators, selectedIndicatorCode) => {
     if (!indicators) return null;
+    if (isEmpty(indicators[0])) return null;
+
     return indicators.find(
       ind => ind[0].indicator_code === selectedIndicatorCode
     );
@@ -115,6 +118,8 @@ const getSelectedIndicator = createSelector(
   [ getPopulationIndicatorsMetadata, getSelectedIndicatorCode ],
   (indicators, selectedIndicatorCode) => {
     if (!indicators) return null;
+    if (isEmpty(indicators[0])) return null;
+
     const selectedIndicator = indicators.find(
       ind => ind[0].code === selectedIndicatorCode
     );
