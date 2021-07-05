@@ -84,7 +84,7 @@ platforms:
           - province_locations_id
       - name: province_locations_members
         menu: Province Platform
-        importer: Province::ImportLocationMembers
+        importer: Province::ImportLocationsMembers
         datasets:
           - province_locations_groupings
       - name: province_indicators
