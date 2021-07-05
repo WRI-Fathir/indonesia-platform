@@ -1,7 +1,7 @@
 class ImportEmissionActivities
   include ClimateWatchEngine::CSVImporter
 
-  headers :source, :geoid, :sector, :subsector, :category
+  headers :source, :geoid, :sector, :subsector
 
   DATA_FILEPATH = "#{CW_FILES_PREFIX}emission_activities/emission_activities.csv".freeze
 
@@ -19,7 +19,6 @@ class ImportEmissionActivities
   def cleanup
     EmissionActivity::Value.delete_all
     EmissionActivity::Sector.delete_all
-    EmissionActivity::Category.delete_all
   end
 
   def csv
@@ -37,17 +36,10 @@ class ImportEmissionActivities
     end
   end
 
-  def category_attributes(row)
-    {
-      name: row[:category]
-    }
-  end
-
   def sector_attributes(row)
     {
       name: row[:subsector],
-      parent: EmissionActivity::Sector.find_or_create_by!(name: row[:sector]),
-      category: EmissionActivity::Category.find_or_create_by!(category_attributes(row)),
+      parent: EmissionActivity::Sector.find_or_create_by!(name: row[:sector])
     }
   end
 

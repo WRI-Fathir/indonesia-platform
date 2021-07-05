@@ -56,6 +56,7 @@ HistoricalEmissions::ImportHistoricalEmissions.class_eval do
   def import_sectors(content, filepath)
     import_each_with_logging(content, filepath) do |row|
       next if HistoricalEmissions::Sector.find_by(name: row[:sector])
+
       sector = sector_attributes(row)
       HistoricalEmissions::Sector.create!(sector)
     end
@@ -64,6 +65,7 @@ HistoricalEmissions::ImportHistoricalEmissions.class_eval do
   def import_categories(content, filepath)
     import_each_with_logging(content, filepath) do |row|
       next if HistoricalEmissions::Category.find_by(name: row[:category])
+
       category = category_attributes(row)
       HistoricalEmissions::Category.create!(category)
     end
@@ -72,8 +74,18 @@ HistoricalEmissions::ImportHistoricalEmissions.class_eval do
   def import_sub_categories(content, filepath)
     import_each_with_logging(content, filepath) do |row|
       next if HistoricalEmissions::SubCategory.find_by(name: row[:sub_category])
+
       sub_category = sub_category_attributes(row)
       HistoricalEmissions::SubCategory.create!(sub_category)
     end
+  end
+
+  def cleanup
+    HistoricalEmissions::Record.delete_all
+    HistoricalEmissions::SubCategory.delete_all
+    HistoricalEmissions::Category.delete_all
+    HistoricalEmissions::Sector.delete_all
+    HistoricalEmissions::DataSource.delete_all
+    HistoricalEmissions::Gas.delete_all
   end
 end

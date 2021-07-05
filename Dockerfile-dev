@@ -1,5 +1,5 @@
 FROM ruby:2.5.1
-MAINTAINER Jose Angel Parreño <joseangel.parreno@vizzuality.com>
+MAINTAINER Anggia Ramadhan <anggia.ramadhan@gmail.com>
 
 ENV NAME cw-indonesia
 ENV RAKE_ENV development
@@ -34,4 +34,4 @@ COPY . ./
 EXPOSE 3000
 
 # Start app
-CMD npm start
+CMD yarn start

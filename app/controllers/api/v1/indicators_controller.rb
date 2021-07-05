@@ -17,11 +17,11 @@ module Api
             render json: {
               values: ActiveModelSerializers::SerializableResource.new(
                 values,
-                each_serializer: IndicatorValueSerializer
+                each_serializer: Api::V1::IndicatorValueSerializer
               ).as_json,
               indicators: ActiveModelSerializers::SerializableResource.new(
                 indicators,
-                each_serializer: IndicatorSerializer
+                each_serializer: Api::V1::IndicatorSerializer
               ).as_json
             }
           end
@@ -30,7 +30,7 @@ module Api
             data_sources = data_sources.where(short_title: sources) if sources
 
             render zip: {
-              'indicators.csv' => IndicatorValueCSVSerializer.new(values).to_csv,
+              'indicators.csv' => Api::V1::IndicatorValueCSVSerializer.new(values).to_csv,
               'data_sources.csv' => data_sources.to_csv
             }
           end

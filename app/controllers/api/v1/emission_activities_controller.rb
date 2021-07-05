@@ -2,7 +2,7 @@ module Api
   module V1
     class EmissionActivitiesController < ApiController
       def index
-        values = ::EmissionActivity::Value.includes(:location, sector: [:parent, :category])
+        values = ::EmissionActivity::Value.includes(:location, sector: [:parent])
         values = values.where(locations: {iso_code3: locations}) if locations
 
         respond_to do |format|
