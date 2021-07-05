@@ -18,11 +18,11 @@ module  Api
               render json: {
                 values: ActiveModelSerializers::SerializableResource.new(
                   values,
-                  each_serializer: Api::V1::Province::PolicyValueSerializer
+                  each_serializer: PolicyValueSerializer
                 ).as_json,
                 policies: ActiveModelSerializers::SerializableResource.new(
                   policies,
-                  each_serializer: Api::V1::Province::PolicySerializer
+                  each_serializer: PolicySerializer
                 ).as_json
               }
             end
@@ -31,7 +31,7 @@ module  Api
               data_sources = data_sources.where(short_title: sources) if sources
 
               render zip: {
-                'policies.csv' => Api::V1::Province::PolicyValueCSVSerializer.new(values).to_csv,
+                'policies.csv' => PolicyValueCSVSerializer.new(values).to_csv,
                 'data_sources.csv' => data_sources.to_csv
               }
             end

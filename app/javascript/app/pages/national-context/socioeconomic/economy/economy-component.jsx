@@ -15,12 +15,12 @@ import styles from './economy-styles';
 class Economy extends PureComponent {
   constructor(props) {
     super(props);
-
+  
     this.state = {
       isOpen: false
     };
   }
-
+  
   render() {
     const shareableLink = `${window.location.origin}${window.location.pathname}#economy`
     const { isOpen } = this.state

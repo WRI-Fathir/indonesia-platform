@@ -23,12 +23,27 @@ class Province::ImportLocations
   def csv
     @csv = S3CSVReader.read(LOCATIONS_FILEPATH)
   end
-
+  
   def csv_id
     @csv_id ||= S3CSVReader.read(LOCATIONS_ID_FILEPATH)
   end
 
   def import_locations
+    # import_each_with_logging(csv, LOCATIONS_FILEPATH) do |row|
+    #   attributes = {
+    #     iso_code3: iso_code3(row),
+    #     iso_code2: iso_code2(row),
+    #     wri_standard_name: row[:wri_standard_name],
+    #     pik_name: row[:pik_name],
+    #     cait_name: row[:cait_name],
+    #     ndcp_navigators_name: row[:ndcp_navigators_name],
+    #     unfccc_group: row[:unfccc_group],
+    #     location_type: row[:location_type] || 'COUNTRY',
+    #     show_in_cw: show_in_cw(row)
+    #   }
+    #
+    #   create_or_update(attributes)
+    # end
     I18n.with_locale(:en) do
       import_each_with_logging(csv, LOCATIONS_FILEPATH) do |row|
         create_or_update(location_attributes(row))

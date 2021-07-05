@@ -43,8 +43,7 @@ ActiveAdmin.register_page 'Indonesia Platform Province Locations' do
 
   menu parent: 'Province Platform',
        label: section_name.split('_').map(&:capitalize).join(' '),
-       if: proc { DataUploader::Helpers::Ability.can_view?(platform_name) },
-       priority: 0
+       if: proc { DataUploader::Helpers::Ability.can_view?(platform_name) }
 
   section_proc = proc {
     DataUploader::Repositories::SectionRepository.new.filter_by_section_and_platform(

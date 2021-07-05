@@ -4,7 +4,6 @@ import sortBy from 'lodash/sortBy';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import uniq from 'lodash/uniq';
-import isEmpty from 'lodash/isEmpty';
 import {
   getThemeConfig,
   getTooltipConfig,
@@ -32,7 +31,6 @@ const getNationalIndicatorsForEconomy = createSelector(
   [ getNationalIndicators ],
   indicators => {
     if (!indicators) return null;
-    if (isEmpty(indicators)) return null;
     return indicators.filter(ind => ind.indicator_code.includes('GDP_'));
   }
 );
@@ -41,7 +39,6 @@ const getEconomyIndicatorsValues = createSelector(
   [ getIndicatorsData ],
   indicators => {
     if (!indicators) return null;
-    if (isEmpty(indicators)) return null;
     return indicators.values &&
       indicators.values.filter(ind => ind.indicator_code.includes('GDP_'));
   }
@@ -70,8 +67,6 @@ const getIndicatorsOptions = createSelector(
   [ getEconomyIndicatorsMetadata ],
   indicators => {
     if (!indicators) return null;
-    if (isEmpty(indicators)) return null;
-
     return sortBy(
       indicators.map(ind => ({ label: ind.name, value: ind.code })),
       'label'
@@ -83,7 +78,6 @@ const getSelectedIndicator = createSelector(
   [ getEconomyIndicatorsMetadata, getSelectedIndicatorCode ],
   (indicators, code) => {
     if (!indicators) return null;
-    if (isEmpty(indicators)) return null;
     const indicator = indicators.find(i => i.code === code);
     return {
       value: indicator.code,
@@ -108,7 +102,6 @@ const getSelectedProvinces = createSelector(
   [ getQuery, getProvincesSelectionOptions ],
   (query, options) => {
     if (!options) return null;
-    if (isEmpty(options)) return null;
     if (!query || !query.gdpProvince)
       return [ { value: options[0].value, label: options[0].label } ];
     const queryArray = query.gdpProvince.split(',');
@@ -125,8 +118,6 @@ const getChartRawData = createSelector(
   [ getSelectedIndicatorsValues, getSelectedProvinces ],
   (selectedIndicatorValues, selectedProvinces) => {
     if (!selectedIndicatorValues) return null;
-    if (isEmpty(selectedProvinces)) return null;
-
     return selectedProvinces.map(st => {
       const provinceData = selectedIndicatorValues.find(
         i => i.location_iso_code3 === st.value

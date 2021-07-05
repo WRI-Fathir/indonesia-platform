@@ -210,7 +210,12 @@ const parseChartData = createSelector(
       )
         return null;
 
-      const yearValues = [...Array(42).keys()].map(i => i + 1990);
+      let yearValues = []
+      let i = 1990
+      while (i < 2031) {
+        yearValues.push(i)
+        i++
+      }
 
       // for CW API we don't have precalculated data per metric, all values provided
       // are absolute metric, we are going to calculate per gdp, per capita
@@ -374,7 +379,7 @@ const getGHGEmissions = ({ GHGEmissions = {} }) => GHGEmissions;
 const getChartLoading = createSelector(
   [ getMetadata, getGHGEmissions ],
   (metadata, ghgEmissions) =>
-    (metadata && metadata.loading) || (ghgEmissions && ghgEmissions.loading)
+    metadata && metadata.loading || ghgEmissions && ghgEmissions.loading
 );
 
 const getDataLoading = createSelector(

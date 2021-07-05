@@ -20,7 +20,7 @@ HistoricalEmissions::MetadataSerializer.class_eval do
 
   def metric
     object.metrics.map do |m|
-      m.slice(:id, :name, :code)
+      m.slice(:id, :name, :code, :unit)
     end
   end
 
