@@ -52,7 +52,7 @@ class ImportIndicators
     @indicators_csv ||= S3CSVReader.read(INDICATORS_FILEPATH)
   end
 
-  def indicators_id_csvc
+  def indicators_id_csv
     @indicators_id_csv ||= S3CSVReader.read(INDICATORS_ID_FILEPATH)
   end
 
