@@ -5,8 +5,8 @@ class ImportIndicators
           indicators_id: [:ind_code, :indicator],
           indicator_values: [:geoid, :ind_code, :source]
 
-  INDICATORS_FILEPATH = "#{CW_FILES_PREFIX}indicators/indicators.csv"
-  INDICATORS_ID_FILEPATH = "#{CW_FILES_PREFIX}indicators/indicators_id.csv"
+  INDICATORS_FILEPATH = "#{CW_FILES_PREFIX}indicators/indicators.csv".freeze
+  INDICATORS_ID_FILEPATH = "#{CW_FILES_PREFIX}indicators/indicators_id.csv".freeze
   INDICATOR_VALUE_FILEPATHS = %W(
     #{CW_FILES_PREFIX}indicators/population.csv
     #{CW_FILES_PREFIX}indicators/economic.csv
@@ -14,7 +14,7 @@ class ImportIndicators
     #{CW_FILES_PREFIX}indicators/pc_forest.csv
     #{CW_FILES_PREFIX}indicators/pc_agriculture.csv
     #{CW_FILES_PREFIX}indicators/pc_energy.csv
-  )
+  ).freeze
 
   def call
     return unless all_headers_valid?
