@@ -1,0 +1,10 @@
+<%= form_tag("/admin/technical_supports", method: "get", class: "filter_form") do %>
+  <div class="filter_form_field">
+    <%= label_tag(:key, "Filename") %>
+    <%= text_field_tag(:filename, params[:filename]) %>
+  </div>
+  <div class="buttons">
+    <input type="submit" value="Filter">
+    <a class="clear_filters_btn" href="/admin/technical_supports">Clear Filters</a>
+  </div>
+<% end %>
