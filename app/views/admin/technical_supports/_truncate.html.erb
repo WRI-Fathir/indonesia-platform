@@ -1,0 +1,9 @@
+<%= form_tag("/admin/technical_supports/delete", method: :delete, class: "filter_form") do %>
+  <div class="filter_form_field">
+    <%= label_tag(:database_name, "Database Name") %>
+    <%= select_tag(:database_name, options_for_select(['Active Storage'])) %>
+  </div>
+  <div class="buttons">
+    <input type="submit" value="Submit">
+  </div>
+<% end %>
