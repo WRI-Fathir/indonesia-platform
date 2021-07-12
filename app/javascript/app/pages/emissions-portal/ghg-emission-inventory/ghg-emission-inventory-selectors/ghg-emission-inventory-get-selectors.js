@@ -1,3 +1,9 @@
+/*
+  filename: ghg-emission-inventory-get-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createSelector } from 'reselect';
 import { getTranslate } from 'selectors/translation-selectors';
 import { getFieldQuery } from 'selectors/filters-selectors';

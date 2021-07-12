@@ -1,3 +1,7 @@
+#filename: import_locations_members.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class Province::ImportLocationsMembers
   include ClimateWatchEngine::CSVImporter
 

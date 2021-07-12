@@ -1,3 +1,9 @@
+/*
+  filename: historical-emissions-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector } from 'reselect';
 import { getTranslate } from 'selectors/translation-selectors';
 import { getQuery } from 'selectors/filters-selectors';

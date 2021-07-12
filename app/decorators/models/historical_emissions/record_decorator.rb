@@ -1,3 +1,7 @@
+#filename: record_decorator.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 HistoricalEmissions::Record.class_eval do
   belongs_to :metric, class_name: 'HistoricalEmissions::Metric'
   belongs_to :category, class_name: 'HistoricalEmissions::Category'

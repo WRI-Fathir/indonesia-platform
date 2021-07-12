@@ -1,3 +1,7 @@
+#filename: import_province_plans.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportProvincePlans
   include ClimateWatchEngine::CSVImporter
 

@@ -1,3 +1,9 @@
+/*
+  filename: section-slideshow.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { connect } from 'react-redux';
 import { getLocale } from 'selectors/translation-selectors';
 import withTranslations from 'providers/translations-provider/with-translations.hoc';

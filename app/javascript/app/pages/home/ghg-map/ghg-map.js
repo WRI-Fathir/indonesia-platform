@@ -1,3 +1,9 @@
+/*
+  filename: ghg-map.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { connect } from 'react-redux';
 
 import Component from './ghg-map-component';

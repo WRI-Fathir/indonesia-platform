@@ -1,3 +1,7 @@
+#filename: import_commitment_timeline_entries.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportCommitmentTimelineEntries
   include ClimateWatchEngine::CSVImporter
 

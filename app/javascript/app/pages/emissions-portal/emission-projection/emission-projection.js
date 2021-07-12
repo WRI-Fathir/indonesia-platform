@@ -1,3 +1,9 @@
+/*
+  filename: emission-projection.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { connect } from 'react-redux';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';

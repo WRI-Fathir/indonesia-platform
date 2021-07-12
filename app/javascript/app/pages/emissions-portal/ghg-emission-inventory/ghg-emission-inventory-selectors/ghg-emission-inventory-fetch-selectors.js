@@ -1,3 +1,9 @@
+/*
+  filename: ghg-emission-inventory-fetch-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import isArray from 'lodash/isArray';
 import { createSelector } from 'reselect';
 import { ALL_SELECTED } from 'constants/constants';

@@ -1,3 +1,9 @@
+/*
+  filename: climate-plans-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import { createTextSearchSelector } from 'selectors/util-selectors';
 import { getProvince } from 'selectors/provinces-selectors';

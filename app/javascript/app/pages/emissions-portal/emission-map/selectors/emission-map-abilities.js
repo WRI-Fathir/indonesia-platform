@@ -1,3 +1,9 @@
+/*
+  filename: emission-map-abilities.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import {
   PRIMARY_SOURCE_OF_EMISSION_INDICATOR,
   ADAPTATION_CODE

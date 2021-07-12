@@ -1,3 +1,9 @@
+/*
+  filename: overview-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import groupBy from 'lodash/groupBy';
 import { getTranslate } from 'selectors/translation-selectors';

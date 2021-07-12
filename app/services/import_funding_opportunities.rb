@@ -1,3 +1,7 @@
+#filename: import_funding_opportunities.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportFundingOpportunities
   include ClimateWatchEngine::CSVImporter
 

@@ -1,3 +1,9 @@
+/*
+  filename: sectoral-activity-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import indonesiaPaths from 'utils/maps/indonesia-paths';
 import uniqBy from 'lodash/uniqBy';

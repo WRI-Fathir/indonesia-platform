@@ -1,3 +1,7 @@
+#filename: import_historical_emissions_decorators.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 HistoricalEmissions::ImportHistoricalEmissions.class_eval do
   headers metadata: [:source, :sector, :subsectorof, :category, :category_of, :sub_category, :sub_category_of],
           records: [:geoid, :source, :metric, :sector, :category, :sub_category, :gas, :gas_unit]

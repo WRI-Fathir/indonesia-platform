@@ -1,3 +1,9 @@
+/*
+  filename: ghg-map-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createSelector } from 'reselect';
 import flatten from 'lodash/flatten';
 import { scaleQuantile } from 'd3-scale';

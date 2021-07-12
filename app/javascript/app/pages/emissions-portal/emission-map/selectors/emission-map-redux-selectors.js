@@ -1,3 +1,9 @@
+/*
+  filename: emission-map-redux-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 export const getEmissionActivities = ({ emissionActivities }) =>
   emissionActivities && emissionActivities.data;
 

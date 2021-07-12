@@ -1,3 +1,9 @@
+/*
+  filename: emission-map-component.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SectionTitle from 'components/section-title';

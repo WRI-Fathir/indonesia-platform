@@ -1,3 +1,9 @@
+/*
+  filename: sectoral-activity-constants.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 // slug
 export const NO_DATA = 'no-data';
 

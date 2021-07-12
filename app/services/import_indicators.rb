@@ -1,3 +1,7 @@
+#filename: import_indicators.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportIndicators
   include ClimateWatchEngine::CSVImporter
 

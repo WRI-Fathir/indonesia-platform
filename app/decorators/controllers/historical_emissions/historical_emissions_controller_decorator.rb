@@ -1,3 +1,7 @@
+#filename: historical_emissions_controller_decorator.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 HistoricalEmissions::HistoricalEmissionsController.class_eval do
   include Localizable
 

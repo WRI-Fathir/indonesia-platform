@@ -1,3 +1,9 @@
+/*
+  filename: energy-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import capitalize from 'lodash/capitalize';
 import isArray from 'lodash/isArray';

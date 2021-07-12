@@ -1,3 +1,9 @@
+/*
+  filename: population-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import { getTranslate } from 'selectors/translation-selectors';
 import { format } from 'd3-format';

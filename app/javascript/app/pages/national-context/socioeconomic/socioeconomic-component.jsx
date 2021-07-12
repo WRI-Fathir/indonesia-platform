@@ -1,3 +1,9 @@
+/*
+  filename: socioeconomic-component.jsx
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import React, { PureComponent } from 'react';
 import IndicatorsProvider from 'providers/indicators-provider';
 // import styles from './socioeconomic-styles.scss';

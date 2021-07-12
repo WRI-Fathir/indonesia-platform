@@ -1,3 +1,9 @@
+/*
+  filename: agriculture.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { connect } from 'react-redux';
 import Component from './agriculture-component';
 import { getIndicatorsData } from '../sectoral-circumstances-selectors';

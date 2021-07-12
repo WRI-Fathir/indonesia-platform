@@ -1,3 +1,9 @@
+/*
+  filename: sectoral-circumtances-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { getTranslate } from 'selectors/translation-selectors';
 import { getProvince } from 'selectors/provinces-selectors';
 import { createSelector, createStructuredSelector } from 'reselect';

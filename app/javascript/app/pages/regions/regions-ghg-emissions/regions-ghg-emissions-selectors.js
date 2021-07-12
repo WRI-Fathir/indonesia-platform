@@ -1,3 +1,9 @@
+/*
+  filename: regions-ghg-emissions-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import castArray from 'lodash/castArray';
 import get from 'lodash/get';

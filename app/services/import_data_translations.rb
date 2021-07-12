@@ -1,3 +1,7 @@
+#filename: import_data_translations.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportDataTranslations
   include ClimateWatchEngine::CSVImporter
 

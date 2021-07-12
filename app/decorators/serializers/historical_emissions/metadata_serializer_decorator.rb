@@ -1,3 +1,7 @@
+#filename: metadata_serializer_decorator.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 HistoricalEmissions::MetadataSerializer.class_eval do
   attribute :data_source
   attribute :metric

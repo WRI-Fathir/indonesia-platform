@@ -1,3 +1,7 @@
+#filename: record_serializer_decorator.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 HistoricalEmissions::RecordSerializer.class_eval do
   belongs_to :metric
   belongs_to :category

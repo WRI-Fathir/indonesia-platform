@@ -1,3 +1,9 @@
+/*
+  filename: ghg-emission-inventory-data-selectors.js
+  author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+  repository: https://github.com/anggiaramadhan/indonesia-platform
+*/
+
 import { createStructuredSelector, createSelector } from 'reselect';
 import isArray from 'lodash/isArray';
 import castArray from 'lodash/castArray';

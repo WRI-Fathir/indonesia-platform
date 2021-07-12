@@ -1,3 +1,7 @@
+#filename: import_emission_activities.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 class ImportEmissionActivities
   include ClimateWatchEngine::CSVImporter
 

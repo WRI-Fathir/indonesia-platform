@@ -1,3 +1,7 @@
+#filename: import_locations_decorator.rb
+#author: Anggia Ramadhan (anggia.ramadhan@gmail.com)
+#repository: https://github.com/anggiaramadhan/indonesia-platform
+
 Locations::ImportLocations.class_eval do
   headers :wri_standard_name, :iso_code3, :iso_code2, :location_type, :capital_city
 
